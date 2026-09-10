@@ -1,200 +1,135 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React from 'react';
 import { LazyMotion, domAnimation, m } from 'motion/react';
-import { cn } from '../../lib/utils';
 
-// Sleek, physics-based animations
-const letterAnimations = [
-  // 1. Rubber Band (Snap)
+// Sophisticated, playful physics-based micro-interactions for each letter
+const letterPhysicsVariants = [
+  // 1. Elastic Rubber Band Stretch
   {
-    active: {
-      scaleX: [1, 1.25, 0.75, 1.15, 0.95, 1.05, 1],
-      scaleY: [1, 0.75, 1.25, 0.85, 1.05, 0.95, 1],
+    hover: {
+      scaleX: [1, 1.22, 0.85, 1.1, 0.96, 1],
+      scaleY: [1, 0.78, 1.2, 0.92, 1.04, 1],
+      y: [0, -8, 0],
+      transition: { duration: 0.65, ease: "easeOut" }
     },
-    transition: { duration: 0.8, ease: "easeInOut" },
-    transformOrigin: "center center",
+    tap: { scale: 0.9, y: 4 }
   },
-  // 2. The Hinge (Falling effect)
+  // 2. Squash & Spring Jump
   {
-    active: {
-      rotate: [0, 80, 60, 80, 60, 0],
-      y: [0, 10, -5, 5, -2, 0],
-      originX: 0,
-      originY: 1,
+    hover: {
+      scaleY: [1, 0.6, 1.25, 0.95, 1],
+      scaleX: [1, 1.25, 0.85, 1.05, 1],
+      y: [0, 8, -26, 4, 0],
+      transition: { duration: 0.6, ease: "easeOut" }
     },
-    transition: { duration: 1.2, ease: [0.175, 0.885, 0.32, 1.275] },
-    transformOrigin: "bottom left",
+    tap: { scale: 0.9, y: 4 }
   },
-  // 3. Squash and Jump
+  // 3. Elastic Tilt & Pop
   {
-    active: {
-      scaleY: [1, 0.6, 1.2, 1],
-      y: [0, 20, -40, 0],
+    hover: {
+      rotate: [0, -14, 12, -6, 2, 0],
+      scale: [1, 1.18, 1],
+      y: [0, -12, 0],
+      transition: { duration: 0.65, ease: "easeOut" }
     },
-    transition: { duration: 0.6, ease: "easeOut" },
-    transformOrigin: "bottom center",
+    tap: { scale: 0.9, y: 4 }
   },
-  // 4. Falling (Requests)
+  // 4. Spring Levitation
   {
-    active: {
-      rotateX: [0, 240, 150, 200, 175, 180, 180, 0],
-      scale: [1, 1.1, 1],
+    hover: {
+      y: [0, -20, 0],
+      scale: [1, 1.12, 1],
+      transition: { duration: 0.55, ease: "easeInOut" }
     },
-    transition: {
-      duration: 2,
-      ease: "easeOut",
-      times: [0, 0.12, 0.24, 0.36, 0.48, 0.6, 0.85, 1],
-    },
-    transformOrigin: "50% 80%",
+    tap: { scale: 0.9, y: 4 }
   },
-  // 5. Elastic Slide
+  // 5. Impact Pulse
   {
-    active: {
-      x: [0, -20, 15, -10, 5, 0],
+    hover: {
+      scale: [1, 1.28, 0.94, 1.06, 1],
+      y: [0, -10, 0],
+      transition: { duration: 0.5, ease: "easeOut" }
     },
-    transition: { duration: 0.8, ease: "easeInOut" },
-    transformOrigin: "center center",
+    tap: { scale: 0.9, y: 4 }
   },
-  // 6. Impact Shake
+  // 6. Right Twist Bounce
   {
-    active: {
-      x: [0, -5, 5, -5, 5, -2, 2, 0],
-      y: [0, -2, 2, -1, 1, 0],
-      rotate: [0, -1, 1, -0.5, 0.5, 0],
+    hover: {
+      rotate: [0, 14, -10, 5, 0],
+      scale: [1, 1.14, 1],
+      y: [0, -15, 0],
+      transition: { duration: 0.6, ease: "easeOut" }
     },
-    transition: { duration: 0.5, ease: "linear" },
-    transformOrigin: "center center",
+    tap: { scale: 0.9, y: 4 }
   },
-  // 7. Pop (Scale)
+  // 7. Ripple Snap
   {
-    active: {
-      scale: [1, 1.4, 1],
+    hover: {
+      scaleX: [1, 0.82, 1.2, 0.95, 1],
+      scaleY: [1, 1.22, 0.86, 1.05, 1],
+      y: [0, -14, 0],
+      transition: { duration: 0.6, ease: "easeOut" }
     },
-    transition: { duration: 0.5, ease: "easeInOut" },
-    transformOrigin: "center center",
-  },
-  // 8. Levitate
-  {
-    active: {
-      y: [0, -30, 0],
-      scale: [1, 1.1, 1],
-      textShadow: [
-        "0px 0px 0px rgba(0,0,0,0)",
-        "0px 20px 20px rgba(0,0,0,0.2)",
-        "0px 0px 0px rgba(0,0,0,0)",
-      ],
-    },
-    transition: { duration: 1.2, ease: "easeInOut" },
-    transformOrigin: "center center",
-  },
+    tap: { scale: 0.9, y: 4 }
+  }
 ];
 
 export default function DancingLetters({
-  text = "EDUTHOO",
+  text = "eduthoo",
   className = "",
-  letterClassName = "",
+  style = {},
+  letterStyle = {}
 }) {
-  const [activeIndices, setActiveIndices] = useState(new Set());
   const letters = text.split("");
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoaded(true), 1000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleClick = useCallback((index) => {
-    setActiveIndices((prev) => {
-      const next = new Set(prev);
-      if (next.has(index)) {
-        next.delete(index);
-      }
-      setTimeout(() => {
-        setActiveIndices((prevInner) => {
-          const nextInner = new Set(prevInner);
-          nextInner.add(index);
-          return nextInner;
-        });
-      }, 10);
-      return next;
-    });
-  }, []);
-
-  const handleAnimationComplete = useCallback((index) => {
-    setActiveIndices((prev) => {
-      if (!prev.has(index)) return prev;
-      const next = new Set(prev);
-      next.delete(index);
-      return next;
-    });
-  }, []);
 
   return (
     <LazyMotion features={domAnimation}>
       <m.div
-        className={cn(
-          "flex items-center select-none",
-          className,
-        )}
-        style={{ perspective: "1000px", display: 'inline-flex', flexWrap: 'nowrap' }}
+        className={`hero-brand-title ${className}`}
+        style={{
+          fontFamily: 'var(--font-logo)',
+          display: 'inline-flex',
+          alignItems: 'baseline',
+          lineHeight: 1,
+          ...style
+        }}
         initial="hidden"
         animate="visible"
         variants={{
-          hidden: { opacity: 0, y: 20 },
+          hidden: { opacity: 0, y: 14 },
           visible: {
             opacity: 1,
             y: 0,
             transition: {
-              staggerChildren: 0.05,
-            },
-          },
+              staggerChildren: 0.04,
+              delayChildren: 0.05
+            }
+          }
         }}
       >
         {letters.map((letter, id) => {
-          const animIndex = id % letterAnimations.length;
-          const anim = letterAnimations[animIndex];
-          const isActive = activeIndices.has(id);
+          const physics = letterPhysicsVariants[id % letterPhysicsVariants.length];
 
           return (
             <m.span
               key={`${letter}-${id}`}
+              className="hero-brand-letter"
               variants={{
-                hidden: { opacity: 0, y: 20, scale: 0.8 },
+                hidden: { opacity: 0, y: 16, scale: 0.92 },
                 visible: {
                   opacity: 1,
-                  scale: 1,
-                  x: 0,
                   y: 0,
-                  rotate: 0,
-                  rotateX: 0,
-                  rotateY: 0,
-                  scaleX: 1,
-                  scaleY: 1,
-                  textShadow: "0px 0px 0px rgba(0,0,0,0)",
-                  transition: { type: "spring", stiffness: 300, damping: 20 },
-                },
-                active: {
-                  ...anim.active,
-                  opacity: 1,
-                  transition: anim.transition,
-                },
+                  scale: 1,
+                  transition: { type: "spring", stiffness: 350, damping: 25 }
+                }
               }}
-              animate={isActive ? "active" : isLoaded ? "visible" : undefined}
-              onHoverStart={() => {
-                if (!isActive) handleClick(id);
-              }}
-              onClick={() => handleClick(id)}
-              onAnimationComplete={(definition) => {
-                if (definition === "active") handleAnimationComplete(id);
-              }}
-              className={cn(
-                "relative inline-block cursor-pointer",
-                letterClassName,
-                isActive ? "z-10" : "z-0",
-              )}
+              whileHover={physics.hover}
+              whileTap={physics.tap}
               style={{
-                transformOrigin: anim.transformOrigin,
-                transformStyle: "preserve-3d",
+                display: 'inline-block',
+                cursor: 'pointer',
                 userSelect: 'none',
+                lineHeight: 1,
+                ...letterStyle
               }}
             >
               {letter}

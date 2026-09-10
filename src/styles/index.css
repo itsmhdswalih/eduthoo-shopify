@@ -396,3 +396,39 @@ button {
     scroll-behavior: auto !important;
   }
 }
+
+/* =========================================================================
+   HERO BRAND TITLE & DANCING LETTERS (Matching Logo Serif Typography)
+   ========================================================================= */
+
+.hero-brand-title-wrap {
+  margin-bottom: 24px;
+  line-height: 1;
+}
+
+.hero-brand-title {
+  font-family: var(--font-logo);
+  font-size: clamp(56px, 8.5vw, 104px);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--color-primary-black);
+  display: inline-flex;
+  align-items: baseline;
+  user-select: none;
+  text-rendering: optimizeLegibility;
+}
+
+.hero-brand-letter {
+  display: inline-block;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: 1;
+  color: inherit;
+  cursor: pointer;
+  transform-origin: bottom center;
+  will-change: transform;
+  user-select: none;
+}
+

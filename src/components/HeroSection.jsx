@@ -42,11 +42,17 @@ export default function HeroSection({ onShopNow, onExplore }) {
             </div>
 
             {/* Massive Hero Heading with Interactive Dancing Letters */}
-            <div style={{ marginBottom: '24px', lineHeight: 0.95 }}>
+            <div className="hero-brand-title-wrap">
               <DancingLetters
-                text="EDUTHOO"
-                letterClassName="font-extrabold uppercase text-black"
-                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter"
+                text="eduthoo"
+                style={{
+                  fontSize: 'clamp(58px, 9vw, 112px)',
+                  fontWeight: 900,
+                  letterSpacing: '-0.025em',
+                  lineHeight: 0.95,
+                  color: 'var(--color-primary-black)',
+                  fontFamily: 'var(--font-logo)'
+                }}
               />
             </div>
 
