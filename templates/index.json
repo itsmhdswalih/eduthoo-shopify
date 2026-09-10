@@ -1,7 +1,10 @@
 {
   "sections": {
     "hero": { "type": "hero", "settings": {} },
-    "featured": { "type": "featured-collection", "settings": {} }
+    "categories": { "type": "category-showcase", "settings": {} },
+    "featured": { "type": "featured-collection", "settings": {} },
+    "trust": { "type": "trust-bar", "settings": {} },
+    "newsletter": { "type": "newsletter", "settings": {} }
   },
-  "order": ["hero", "featured"]
+  "order": ["hero", "categories", "featured", "trust", "newsletter"]
 }

@@ -9,12 +9,12 @@
       {% if settings.logo != blank %}
         <span style="width: {{ settings.logo_width }}px;">{{ settings.logo | image_url: width: 192 | image_tag: widths: '64,96,128,192', alt: shop.name }}</span>
       {% else %}
-        <span>{{ shop.name }}</span>
+        <span class="ed-logo-fallback">{{ 'logo/eduthoo-emblem-clean.png' | asset_url | image_tag: alt: shop.name }}</span>
       {% endif %}
     </a>
     <div class="ed-header-actions">
-      <a href="{{ routes.search_url }}" aria-label="Search">Search</a>
-      <a href="{{ routes.cart_url }}" aria-label="Cart, {{ cart.item_count }} items">Cart{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}</a>
+      <a href="{{ routes.search_url }}" aria-label="Search">SEARCH</a>
+      <a href="{{ routes.cart_url }}" aria-label="Cart, {{ cart.item_count }} items">CART{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}</a>
     </div>
   </div>
 </header>

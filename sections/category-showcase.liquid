@@ -1,0 +1,15 @@
+<section class="ed-section ed-category-section">
+  <div class="ed-container">
+    <div class="ed-section-heading"><p>SHOP BY NEED</p><h2>MADE FOR MODERN LIVING</h2></div>
+    <div class="ed-category-grid">
+      <a href="{{ routes.all_products_collection_url }}" class="ed-category-card">{{ 'images/categories/gadgets.jpg' | asset_url | image_tag: loading: 'lazy', alt: 'Gadgets' }}<span>GADGETS</span></a>
+      <a href="{{ routes.all_products_collection_url }}" class="ed-category-card">{{ 'images/categories/smart_finds.jpg' | asset_url | image_tag: loading: 'lazy', alt: 'Smart finds' }}<span>SMART FINDS</span></a>
+      <a href="{{ routes.all_products_collection_url }}" class="ed-category-card">{{ 'images/categories/everyday.jpg' | asset_url | image_tag: loading: 'lazy', alt: 'Everyday essentials' }}<span>EVERYDAY</span></a>
+      <a href="{{ routes.all_products_collection_url }}" class="ed-category-card">{{ 'images/categories/lifestyle.jpg' | asset_url | image_tag: loading: 'lazy', alt: 'Lifestyle essentials' }}<span>LIFESTYLE</span></a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "EDUTHOO categories", "settings": [], "presets": [{ "name": "EDUTHOO categories" }] }
+{% endschema %}

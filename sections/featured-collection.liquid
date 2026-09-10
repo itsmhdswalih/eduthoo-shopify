@@ -8,6 +8,18 @@
       </div>
     </div>
   </section>
+{% else %}
+  <section class="ed-section">
+    <div class="ed-container">
+      <div class="ed-section-heading"><p>CURATED FOR YOU</p><h2>BEST OF EDUTHOO</h2></div>
+      <div class="ed-product-grid ed-product-grid--preview">
+        <article class="ed-product-card"><div class="ed-product-card__image">{{ 'images/products/product_01.jpg' | asset_url | image_tag: alt: 'EDUTHOO everyday essential' }}</div><div class="ed-product-card__content"><p>EVERYDAY</p><h3>Modern Daily Essential</h3><span>Shop the collection</span></div></article>
+        <article class="ed-product-card"><div class="ed-product-card__image">{{ 'images/products/product_02.jpg' | asset_url | image_tag: alt: 'EDUTHOO smart accessory' }}</div><div class="ed-product-card__content"><p>SMART FINDS</p><h3>Connected Essentials</h3><span>Shop the collection</span></div></article>
+        <article class="ed-product-card"><div class="ed-product-card__image">{{ 'images/products/product_03.jpg' | asset_url | image_tag: alt: 'EDUTHOO gadget' }}</div><div class="ed-product-card__content"><p>GADGETS</p><h3>Precision Technology</h3><span>Shop the collection</span></div></article>
+        <article class="ed-product-card"><div class="ed-product-card__image">{{ 'images/products/product_04.jpg' | asset_url | image_tag: alt: 'EDUTHOO lifestyle accessory' }}</div><div class="ed-product-card__content"><p>TECH</p><h3>Better Desk Setup</h3><span>Shop the collection</span></div></article>
+      </div>
+    </div>
+  </section>
 {% endif %}
 
 {% schema %}

@@ -1,0 +1,5 @@
+<section class="ed-newsletter"><div class="ed-container"><div><p>STAY IN THE LOOP</p><h2>FIRST TO KNOW. FIRST TO GET IT.</h2></div>{% form 'customer', class: 'ed-newsletter-form' %}<input type="hidden" name="contact[tags]" value="newsletter"><label class="visually-hidden" for="NewsletterEmail">Email address</label><input id="NewsletterEmail" type="email" name="contact[email]" value="{{ form.email }}" placeholder="Your email address" required>{% if form.posted_successfully? %}<p>Thank you for subscribing.</p>{% else %}<button class="ed-button" type="submit">JOIN</button>{% endif %}{% endform %}</div></section>
+
+{% schema %}
+{ "name": "EDUTHOO newsletter", "settings": [], "presets": [{ "name": "EDUTHOO newsletter" }] }
+{% endschema %}

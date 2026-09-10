@@ -1,9 +1,18 @@
-<section class="ed-hero"{% if section.settings.image != blank %} style="background-image:url('{{ section.settings.image | image_url: width: 2200 }}')"{% endif %}>
+<section class="ed-hero">
   <div class="ed-container ed-hero-content">
-    <p>{{ section.settings.eyebrow | escape }}</p>
-    <h1>{{ section.settings.heading | escape }}</h1>
-    <div class="rte">{{ section.settings.text }}</div>
-    {% if section.settings.button_label != blank %}<a class="ed-button ed-button--dark" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label | escape }}</a>{% endif %}
+    <div class="ed-hero-copy">
+      <p>{{ section.settings.eyebrow | escape }}</p>
+      <h1>{{ section.settings.heading | escape }}</h1>
+      <div class="rte">{{ section.settings.text }}</div>
+      {% if section.settings.button_label != blank %}<a class="ed-button ed-button--dark" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label | escape }}</a>{% endif %}
+    </div>
+    <div class="ed-hero-media">
+      {% if section.settings.image != blank %}
+        {{ section.settings.image | image_url: width: 1600 | image_tag: widths: '600,900,1200,1600', alt: section.settings.heading }}
+      {% else %}
+        {{ 'images/curated/item_06.jpg' | asset_url | image_tag: alt: 'EDUTHOO featured technology' }}
+      {% endif %}
+    </div>
   </div>
 </section>
 
