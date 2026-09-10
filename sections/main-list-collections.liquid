@@ -1,0 +1,5 @@
+<section class="ed-section"><div class="ed-container"><h1>Collections</h1><div class="ed-product-grid">{% for collection in collections %}<article class="ed-product-card"><a href="{{ collection.url }}">{% if collection.featured_image %}{{ collection.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: collection.title }}{% endif %}<h2>{{ collection.title | escape }}</h2></a></article>{% endfor %}</div></div></section>
+
+{% schema %}
+{ "name": "Main list collections", "settings": [] }
+{% endschema %}

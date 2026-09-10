@@ -1,0 +1,23 @@
+<section class="ed-hero"{% if section.settings.image != blank %} style="background-image:url('{{ section.settings.image | image_url: width: 2200 }}')"{% endif %}>
+  <div class="ed-container ed-hero-content">
+    <p>{{ section.settings.eyebrow | escape }}</p>
+    <h1>{{ section.settings.heading | escape }}</h1>
+    <div class="rte">{{ section.settings.text }}</div>
+    {% if section.settings.button_label != blank %}<a class="ed-button ed-button--dark" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label | escape }}</a>{% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Background image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "EDUTHOO ESSENTIALS" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "SMART THINGS FOR EVERYDAY LIFE" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Useful technology, modern accessories and better everyday essentials.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "SHOP NOW" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Hero" }]
+}
+{% endschema %}

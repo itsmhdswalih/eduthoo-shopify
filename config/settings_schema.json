@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Brand",
+    "settings": [
+      { "type": "image_picker", "id": "logo", "label": "Circular emblem logo" },
+      { "type": "range", "id": "logo_width", "label": "Logo width", "min": 32, "max": 96, "step": 2, "default": 46, "unit": "px" }
+    ]
+  },
+  {
+    "name": "Colours",
+    "settings": [
+      { "type": "color", "id": "background", "label": "Background", "default": "#FFFFFF" },
+      { "type": "color", "id": "text", "label": "Text", "default": "#000000" }
+    ]
+  }
+]

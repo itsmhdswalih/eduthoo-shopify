@@ -1,0 +1,26 @@
+<footer class="site-footer">
+  <div class="ed-container ed-footer-grid">
+    <div>
+      <h2>{{ shop.name }}</h2>
+      <p>{{ section.settings.description }}</p>
+    </div>
+    <div>
+      <h3>Customer care</h3>
+      {% for link in section.settings.menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}
+    </div>
+  </div>
+  <div class="ed-container ed-footer-bottom">
+    <span>© {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</span>
+    <span>Developed &amp; managed by Muhammad Swalih &amp; Ajmal Muhammad</span>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "textarea", "id": "description", "label": "Brand description", "default": "Smart gadgets, useful technology and everyday essentials for modern living." },
+    { "type": "link_list", "id": "menu", "label": "Customer care menu" }
+  ]
+}
+{% endschema %}

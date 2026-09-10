@@ -1,0 +1,14 @@
+{
+  "current": {
+    "background": "#FFFFFF",
+    "text": "#000000",
+    "logo_width": 46
+  },
+  "presets": {
+    "Default": {
+      "background": "#FFFFFF",
+      "text": "#000000",
+      "logo_width": 46
+    }
+  }
+}

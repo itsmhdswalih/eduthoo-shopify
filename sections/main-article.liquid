@@ -1,0 +1,5 @@
+<article class="ed-section"><div class="ed-container ed-page"><p class="ed-eyebrow">{{ article.published_at | date: '%d %B %Y' }}</p><h1>{{ article.title | escape }}</h1><div class="rte">{{ article.content }}</div></div></article>
+
+{% schema %}
+{ "name": "Main article", "settings": [] }
+{% endschema %}

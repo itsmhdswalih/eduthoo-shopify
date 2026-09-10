@@ -1,0 +1,28 @@
+<section class="ed-section">
+  <div class="ed-container ed-product-layout">
+    <div class="ed-product-media">
+      {% if product.featured_image %}{{ product.featured_image | image_url: width: 1200 | image_tag: widths: '600,900,1200', alt: product.title }}{% endif %}
+    </div>
+    <div class="ed-product-info">
+      <p class="ed-eyebrow">{{ product.type | default: 'EDUTHOO' | escape }}</p>
+      <h1>{{ product.title | escape }}</h1>
+      <div class="ed-price">{{ product.selected_or_first_available_variant.price | money }}{% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}<s>{{ product.selected_or_first_available_variant.compare_at_price | money }}</s>{% endif %}</div>
+      <div class="ed-description rte">{{ product.description }}</div>
+      {% form 'product', product, id: 'eduthoo-product-form' %}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <label class="ed-quantity" for="Quantity-{{ section.id }}">Quantity <input id="Quantity-{{ section.id }}" type="number" name="quantity" min="1" value="1"></label>
+        <div class="ed-purchase-control" data-purchase-control>
+          <button class="ed-purchase-add" type="submit" name="add">ADD TO CART</button>
+          <button class="ed-purchase-buy" type="submit" name="add" formaction="/cart/add?return_to=/checkout" data-buy-button {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}>
+            <span data-buy-label>BUY NOW</span><span class="ed-swipe-handle" aria-hidden="true">‹</span>
+          </button>
+        </div>
+      {% endform %}
+      <div class="ed-product-promises"><span>Free delivery above ₹999</span><span>7-day easy returns</span><span>Secure checkout</span></div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Main product", "settings": [] }
+{% endschema %}

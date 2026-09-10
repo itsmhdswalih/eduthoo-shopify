@@ -1,0 +1,14 @@
+<article class="ed-product-card">
+  <a href="{{ product.url }}" class="ed-product-card__image">
+    {% if product.featured_image %}
+      {{ product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '320,480,640,800', alt: product.title }}
+    {% else %}
+      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {% endif %}
+  </a>
+  <div class="ed-product-card__content">
+    <p>{{ product.type | default: 'EDUTHOO' | escape }}</p>
+    <h3><a href="{{ product.url }}">{{ product.title | escape }}</a></h3>
+    <span>{{ product.price | money }}</span>
+  </div>
+</article>

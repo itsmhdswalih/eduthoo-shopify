@@ -1,0 +1,10 @@
+<div class="announcement-bar">{{ section.settings.text | escape }}</div>
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "settings": [
+    { "type": "text", "id": "text", "label": "Text", "default": "FREE DELIVERY ON ORDERS ABOVE ₹999" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,5 @@
+<section class="ed-section"><div class="ed-container"><h1>{{ blog.title | escape }}</h1>{% for article in blog.articles %}<article class="ed-article"><h2><a href="{{ article.url }}">{{ article.title | escape }}</a></h2><p>{{ article.excerpt_or_content | strip_html | truncatewords: 30 }}</p></article>{% endfor %}</div></section>
+
+{% schema %}
+{ "name": "Main blog", "settings": [] }
+{% endschema %}

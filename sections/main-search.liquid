@@ -1,0 +1,5 @@
+<section class="ed-section"><div class="ed-container"><h1>Search</h1><form action="{{ routes.search_url }}" method="get"><input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search products"><button class="ed-button ed-button--dark" type="submit">Search</button></form>{% if search.performed %}<div class="ed-product-grid">{% for item in search.results %}{% if item.object_type == 'product' %}{% render 'product-card', product: item %}{% endif %}{% endfor %}</div>{% endif %}</div></section>
+
+{% schema %}
+{ "name": "Main search", "settings": [] }
+{% endschema %}

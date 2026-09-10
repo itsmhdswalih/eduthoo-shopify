@@ -1,0 +1,5 @@
+<section class="ed-section"><div class="ed-container"><h1>Your cart</h1>{% if cart.item_count == 0 %}<p>Your cart is empty.</p><a class="ed-button ed-button--dark" href="{{ routes.all_products_collection_url }}">Continue shopping</a>{% else %}{% form 'cart', cart %}{% for item in cart.items %}<div class="ed-cart-item"><a href="{{ item.url }}">{{ item.product.title | escape }}</a><span>{{ item.final_line_price | money }}</span><input name="updates[]" value="{{ item.quantity }}" type="number" min="0" aria-label="Quantity for {{ item.product.title | escape }}"></div>{% endfor %}<p class="ed-cart-total">Subtotal {{ cart.total_price | money }}</p><button class="ed-button ed-button--dark" name="checkout" type="submit">Secure checkout</button>{% endform %}{% endif %}</div></section>
+
+{% schema %}
+{ "name": "Main cart", "settings": [] }
+{% endschema %}
