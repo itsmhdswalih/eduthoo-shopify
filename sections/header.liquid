@@ -1,20 +1,19 @@
 <header class="site-header">
   <div class="ed-container ed-header-grid">
     <nav class="ed-nav" aria-label="Primary navigation">
-      {% for link in section.settings.menu.links %}
-        <a href="{{ link.url }}">{{ link.title | escape }}</a>
-      {% endfor %}
+      {% if section.settings.menu != blank %}{% for link in section.settings.menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}{% else %}<a href="{{ routes.all_products_collection_url }}">SHOP</a><a href="{{ routes.all_products_collection_url }}">GADGETS</a><a href="{{ routes.all_products_collection_url }}">TECH</a><a href="{{ routes.all_products_collection_url }}">HOME</a><a href="{{ routes.all_products_collection_url }}">TRENDING</a>{% endif %}
     </nav>
     <a class="ed-logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }} home">
       {% if settings.logo != blank %}
         <span style="width: {{ settings.logo_width }}px;">{{ settings.logo | image_url: width: 192 | image_tag: widths: '64,96,128,192', alt: shop.name }}</span>
       {% else %}
-        <span class="ed-logo-fallback">{{ 'logo/eduthoo-emblem-clean.png' | asset_url | image_tag: alt: shop.name }}</span>
+        <span class="ed-logo-fallback">{{ 'eduthoo-emblem-clean.png' | asset_url | image_tag: alt: shop.name }}</span>
       {% endif %}
     </a>
     <div class="ed-header-actions">
-      <a href="{{ routes.search_url }}" aria-label="Search">SEARCH</a>
-      <a href="{{ routes.cart_url }}" aria-label="Cart, {{ cart.item_count }} items">CART{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}</a>
+      <a href="{{ routes.search_url }}" aria-label="Search" class="ed-icon-link"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 5 5"></path></svg></a>
+      <a href="{{ routes.account_url }}" aria-label="Account" class="ed-icon-link"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="4"></circle><path d="M4 21c.8-4 3.5-6 8-6s7.2 2 8 6"></path></svg></a>
+      <a href="{{ routes.cart_url }}" aria-label="Cart, {{ cart.item_count }} items" class="ed-icon-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14l-1 14H6L5 7Z"></path><path d="M9 8V5a3 3 0 0 1 6 0v3"></path></svg>{% if cart.item_count > 0 %}<b>{{ cart.item_count }}</b>{% endif %}</a>
     </div>
   </div>
 </header>
