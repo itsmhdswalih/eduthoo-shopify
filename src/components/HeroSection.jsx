@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import DancingLetters from './ui/dancing-letters';
 
 export default function HeroSection({ onShopNow, onExplore }) {
   return (
@@ -40,20 +41,14 @@ export default function HeroSection({ onShopNow, onExplore }) {
               <span>SMART THINGS FOR EVERYDAY LIFE</span>
             </div>
 
-            {/* Massive Hero Heading */}
-            <h1
-              style={{
-                fontSize: 'clamp(44px, 7vw, 78px)',
-                fontWeight: 800,
-                letterSpacing: '-0.04em',
-                lineHeight: 0.95,
-                textTransform: 'uppercase',
-                marginBottom: '24px',
-                color: 'var(--color-primary-black)'
-              }}
-            >
-              EDUTHOO
-            </h1>
+            {/* Massive Hero Heading with Interactive Dancing Letters */}
+            <div style={{ marginBottom: '24px', lineHeight: 0.95 }}>
+              <DancingLetters
+                text="EDUTHOO"
+                letterClassName="font-extrabold uppercase text-black"
+                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter"
+              />
+            </div>
 
             {/* Supporting Editorial Paragraph */}
             <p

@@ -13,7 +13,7 @@ import {
   Star
 } from 'lucide-react';
 import ProductCard from './ProductCard';
-import AddBuyControl from './AddBuyControl';
+import WaveSwipeButton from './WaveSwipeButton';
 
 export default function ProductDetailsPage({
   product,
@@ -319,7 +319,7 @@ export default function ProductDetailsPage({
                 </div>
               </div>
 
-              <AddBuyControl
+              <WaveSwipeButton
                 isAdded={isAdded}
                 onAdd={handleAdd}
                 onBuy={handleBuy}
