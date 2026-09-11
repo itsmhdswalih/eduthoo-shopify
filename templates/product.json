@@ -1,1 +1,21 @@
-{ "sections": { "main": { "type": "main-product", "settings": {} } }, "order": ["main"] }
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {}
+    },
+    "brand_features": {
+      "type": "brand-features",
+      "settings": {}
+    },
+    "related": {
+      "type": "related-products",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "brand_features",
+    "related"
+  ]
+}

@@ -104,3 +104,11 @@ img { display: block; max-width: 100%; }
 .ed-brand-features { border-top: 1px solid var(--ed-line); border-bottom: 1px solid var(--ed-line); }
 .ed-feature-card { padding: 40px 30px; background: #fff; border: 1px solid var(--ed-line); border-radius: 4px; transition: transform 0.3s ease; }
 .ed-feature-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(0,0,0,0.04); }
+/* Product Accordions */
+.ed-accordion { border-top: 1px solid var(--ed-line); margin-top: 24px; padding-top: 8px; }
+.ed-accordion details { border-bottom: 1px solid var(--ed-line); }
+.ed-accordion summary { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; font-size: 13px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; list-style: none; }
+.ed-accordion summary::-webkit-details-marker { display: none; }
+.ed-accordion summary svg { transition: transform 0.3s ease; }
+.ed-accordion details[open] summary svg { transform: rotate(180deg); }
+.ed-accordion .ed-accordion__content { padding-bottom: 20px; font-size: 14px; color: #555; line-height: 1.6; }

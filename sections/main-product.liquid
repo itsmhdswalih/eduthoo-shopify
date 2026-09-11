@@ -1,20 +1,42 @@
 <section class="ed-section">
   <div class="ed-container ed-product-layout">
     <div class="ed-product-media">
-      {% if product.featured_image %}{{ product.featured_image | image_url: width: 1200 | image_tag: widths: '600,900,1200', alt: product.title }}{% endif %}
+      {% if product.featured_image %}
+        {{ product.featured_image | image_url: width: 1200 | image_tag: widths: '600,900,1200', alt: product.title }}
+      {% else %}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
     </div>
     <div class="ed-product-info">
       <p class="ed-eyebrow">{{ product.type | default: 'EDUTHOO' | escape }}</p>
-      <h1>{{ product.title | escape }}</h1>
-      <div class="ed-price">{{ product.selected_or_first_available_variant.price | money }}{% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}<s>{{ product.selected_or_first_available_variant.compare_at_price | money }}</s>{% endif %}</div>
-      <div class="ed-description rte">{{ product.description }}</div>
+      <h1>{{ product.title | default: 'EDUTHOO Premium Product' | escape }}</h1>
+      <div class="ed-price">
+        {% if product != blank %}
+          {{ product.selected_or_first_available_variant.price | money }}
+          {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+            <s>{{ product.selected_or_first_available_variant.compare_at_price | money }}</s>
+          {% endif %}
+        {% else %}
+          ₹2,999 <s>₹4,999</s>
+        {% endif %}
+      </div>
+      
+      <div class="ed-description rte">
+        {% if product.description != blank %}
+          {{ product.description }}
+        {% else %}
+          <p>Experience the perfect blend of modern minimalist design and cutting-edge technology. This premium product is crafted to elevate your everyday lifestyle with uncompromising quality and performance.</p>
+        {% endif %}
+      </div>
+      
       {% form 'product', product, id: 'eduthoo-product-form' %}
-        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id | default: '' }}">
         <label class="ed-quantity" for="Quantity-{{ section.id }}">Quantity <input id="Quantity-{{ section.id }}" type="number" name="quantity" min="1" value="1"></label>
+        
         <div class="ed-purchase-wrapper">
           <div class="ed-purchase-control ed-wave-swipe-control" data-wave-swipe-control>
             <!-- Left Zone: ADD -->
-            <button class="ed-purchase-add" type="submit" name="add" data-add-button aria-label="Add to cart">
+            <button class="ed-purchase-add" type="submit" name="add" data-add-button aria-label="Add to cart" {% if product == blank %}disabled{% endif %}>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
               <span>ADD</span>
             </button>
@@ -30,7 +52,7 @@
             </div>
 
             <!-- Right Zone: BUY -->
-            <button class="ed-purchase-buy" type="submit" name="add" formaction="/cart/add?return_to=/checkout" data-buy-button {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %} aria-label="Buy now">
+            <button class="ed-purchase-buy" type="submit" name="add" formaction="/cart/add?return_to=/checkout" data-buy-button {% if product == blank or not product.selected_or_first_available_variant.available %}disabled{% endif %} aria-label="Buy now">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
               <span data-buy-label>BUY</span>
             </button>
@@ -38,7 +60,28 @@
           <span class="ed-swipe-hint">swipe</span>
         </div>
       {% endform %}
-      <div class="ed-product-promises"><span>Free delivery above ₹999</span><span>7-day easy returns</span><span>Secure checkout</span></div>
+      
+      <div class="ed-product-promises">
+        <span>Free delivery above ₹999</span>
+        <span>7-day easy returns</span>
+        <span>Secure checkout</span>
+      </div>
+
+      <div class="ed-accordion">
+        <details>
+          <summary>Details & Specs <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="ed-accordion__content">
+            Engineered for perfection, our products undergo rigorous quality testing. Features a sleek matte finish, ergonomic design, and durable materials meant to last.
+          </div>
+        </details>
+        <details>
+          <summary>Shipping & Returns <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="ed-accordion__content">
+            Enjoy free nationwide shipping on all orders over ₹999. If you're not completely satisfied, return the item within 7 days for a hassle-free refund.
+          </div>
+        </details>
+      </div>
+      
     </div>
   </div>
 </section>
