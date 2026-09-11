@@ -1,8 +1,15 @@
 <section class="ed-hero">
   <div class="ed-container ed-hero-content">
     <div class="ed-hero-copy">
-      <p>{{ section.settings.eyebrow | escape }}</p>
-      <h1>{{ section.settings.heading | escape }}</h1>
+      <p class="ed-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      <div class="ed-hero-title-wrap">
+        <h1 class="ed-hero-title ed-dancing-letters" data-dancing-letters="{{ section.settings.heading | default: 'eduthoo' | escape }}" aria-label="{{ section.settings.heading | default: 'eduthoo' | escape }}">
+          {% assign heading_chars = section.settings.heading | default: 'eduthoo' | split: '' %}
+          {% for char in heading_chars %}
+            <span class="ed-dancing-letter" data-letter-index="{{ forloop.index0 }}">{{ char }}</span>
+          {% endfor %}
+        </h1>
+      </div>
       <div class="rte">{{ section.settings.text }}</div>
       {% if section.settings.button_label != blank %}<a class="ed-button ed-button--dark" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label | escape }}</a>{% endif %}
     </div>
