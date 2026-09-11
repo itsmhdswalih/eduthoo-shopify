@@ -188,7 +188,7 @@ img { display: block; max-width: 100%; }
 }
 .ed-floating-item {
   position: absolute;
-  border-radius: 50%; /* Just to make the black boxes look like circles for now */
+  
   width: 150px;
   height: 150px;
   object-fit: cover;
@@ -237,4 +237,4 @@ body { overflow-x: hidden; }
   top: 0 !important; left: 0 !important; right: auto !important; bottom: auto !important;
   width: 100% !important; height: 100% !important;
 }
-.ed-floating-item { mix-blend-mode: screen; border-radius: 0 !important; }
+
