@@ -112,3 +112,56 @@ img { display: block; max-width: 100%; }
 .ed-accordion summary svg { transition: transform 0.3s ease; }
 .ed-accordion details[open] summary svg { transform: rotate(180deg); }
 .ed-accordion .ed-accordion__content { padding-bottom: 20px; font-size: 14px; color: #555; line-height: 1.6; }
+/* Enhanced Swipe Control (Black Fill) */
+.ed-wave-swipe-control {
+  position: relative;
+  width: 100%;
+  height: 58px;
+  background: #f4f4f4; /* Base light gray */
+  border-radius: 9999px;
+  border: 1.5px solid #222;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  user-select: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.ed-swipe-fill {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 50%; /* Starts covering the right half (BUY) */
+  background: #000;
+  border-radius: 9999px;
+  z-index: 0;
+}
+.ed-purchase-add, .ed-purchase-buy {
+  color: #000; /* Add starts black on light bg */
+  z-index: 1;
+}
+.ed-purchase-buy {
+  color: #fff; /* Buy starts white on black bg */
+}
+.ed-wave-divider-handle {
+  transform: translateX(0) translateY(-50%);
+  top: 50%;
+  left: 50%;
+  margin-left: -22px; /* Center adjustment */
+}
+.ed-wave-arrow-btn {
+  background: #fff;
+  color: #000;
+}
+
+/* Mobile Tweaks */
+@media (max-width: 749px) {
+  h1, .ed-hero-title { font-size: clamp(32px, 7vw, 48px) !important; }
+  h2 { font-size: clamp(24px, 6vw, 32px) !important; }
+  .ed-price { font-size: 24px !important; }
+  .ed-description { font-size: 14px !important; }
+  .ed-container { padding: 0 16px !important; }
+  .ed-section { padding: 40px 0 !important; }
+  .ed-hero-content { padding-top: 60px !important; }
+}

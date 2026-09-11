@@ -1,35 +1,38 @@
 {% assign selected_collection = section.settings.collection %}
-{% if selected_collection != blank %}
-  <section class="ed-section">
-    <div class="ed-container">
-      <div class="ed-section-heading"><p>{{ section.settings.eyebrow | escape }}</p><h2>{{ section.settings.heading | default: selected_collection.title | escape }}</h2></div>
-      <div class="ed-product-grid">
-        {% for product in selected_collection.products limit: section.settings.products_to_show %}{% render 'product-card', product: product %}{% endfor %}
-      </div>
-    </div>
-  </section>
-{% else %}
-  <section class="ed-section">
-    <div class="ed-container">
-      <div class="ed-section-heading ed-section-heading--split"><div><p>BEST SELLING PRODUCTS</p><h2>BEST OF EDUTHOO</h2></div><a class="ed-button" href="{{ routes.all_products_collection_url }}">VIEW ALL  </a></div>
-      <div class="ed-product-grid ed-product-grid--preview">
-        <article class="ed-product-card"><a href="{{ routes.all_products_collection_url }}" class="ed-product-card__image"><img src="{{ 'eduthoo-earbuds.jpg' | asset_url }}" alt="EDUTHOO Pro ANC Wireless Earbuds" width="400" height="400" loading="lazy"><b>BEST SELLER</b></a><div class="ed-product-card__content"><p>GADGETS</p><h3><a href="{{ routes.all_products_collection_url }}">EDUTHOO Pro ANC Wireless Earbuds</a></h3><strong>₹1,999 <s>₹2,999</s></strong><a href="{{ routes.all_products_collection_url }}" class="ed-card-button">VIEW OPTIONS <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a></div></article>
-        <article class="ed-product-card"><a href="{{ routes.all_products_collection_url }}" class="ed-product-card__image"><img src="{{ 'eduthoo-magsafe-stand.jpg' | asset_url }}" alt="EDUTHOO MagSafe stand" width="400" height="400" loading="lazy"><b>TRENDING</b></a><div class="ed-product-card__content"><p>TECH</p><h3><a href="{{ routes.all_products_collection_url }}">EDUTHOO MagSafe 3-in-1 Aluminum Stand</a></h3><strong>₹2,499 <s>₹3,499</s></strong><a href="{{ routes.all_products_collection_url }}" class="ed-card-button">VIEW OPTIONS <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a></div></article>
-        <article class="ed-product-card"><a href="{{ routes.all_products_collection_url }}" class="ed-product-card__image"><img src="{{ 'eduthoo-smart-light.jpg' | asset_url }}" alt="EDUTHOO Smart Ambient Lamp" width="400" height="400" loading="lazy"><b>NEW</b></a><div class="ed-product-card__content"><p>HOME</p><h3><a href="{{ routes.all_products_collection_url }}">EDUTHOO Smart Cylindrical Ambient Lamp</a></h3><strong>₹1,499 <s>₹2,199</s></strong><a href="{{ routes.all_products_collection_url }}" class="ed-card-button">VIEW OPTIONS <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a></div></article>
-        <article class="ed-product-card"><a href="{{ routes.all_products_collection_url }}" class="ed-product-card__image"><img src="{{ 'eduthoo-keyboard.jpg' | asset_url }}" alt="EDUTHOO Wireless Keyboard" width="400" height="400" loading="lazy"><b>FLAGSHIP</b></a><div class="ed-product-card__content"><p>TECH</p><h3><a href="{{ routes.all_products_collection_url }}">EDUTHOO Low-Profile Wireless Keyboard</a></h3><strong>₹3,999 <s>₹5,499</s></strong><a href="{{ routes.all_products_collection_url }}" class="ed-card-button">VIEW OPTIONS <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a></div></article>
-      </div>
-    </div>
-  </section>
+{% assign display_products = selected_collection.products %}
+
+{% if display_products == blank or display_products.size == 0 %}
+  {% assign display_products = collections.all.products | sort: 'published_at' | reverse %}
 {% endif %}
+
+<section class="ed-section">
+  <div class="ed-container">
+    <div class="ed-section-heading">
+      <p>{{ section.settings.eyebrow | escape }}</p>
+      <h2>{{ section.settings.heading | default: selected_collection.title | escape }}</h2>
+    </div>
+    
+    <div class="ed-product-grid">
+      {% for product in display_products limit: section.settings.products_to_show %}
+        {% render 'product-card', product: product %}
+      {% else %}
+        <!-- Fallback if absolutely 0 products exist in the store -->
+        <div style="grid-column: 1 / -1; text-align: center; padding: 40px; background: #fafafa; border: 1px dashed #ccc;">
+          <p>No products found. Add products in your Shopify Admin to see them here.</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 
 {% schema %}
 {
   "name": "Featured collection",
   "settings": [
     { "type": "collection", "id": "collection", "label": "Collection" },
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "CURATED FOR YOU" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "NEW ARRIVALS" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "BEST OF EDUTHOO" },
-    { "type": "range", "id": "products_to_show", "label": "Products", "min": 2, "max": 12, "step": 1, "default": 4 }
+    { "type": "range", "id": "products_to_show", "label": "Products to show", "min": 2, "max": 12, "step": 1, "default": 4 }
   ],
   "presets": [{ "name": "Featured collection" }]
 }
