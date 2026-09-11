@@ -17,7 +17,7 @@
       {% if section.settings.image != blank %}
         {{ section.settings.image | image_url: width: 1600 | image_tag: widths: '600,900,1200,1600', alt: section.settings.heading }}
       {% else %}
-        {{ 'eduthoo-hero-desk.jpg' | asset_url | image_tag: alt: 'EDUTHOO minimalist smart gadgets' }}
+        <img src="{{ 'eduthoo-hero-desk.jpg' | asset_url }}" alt="EDUTHOO minimalist smart gadgets" width="600" height="600" loading="eager">
       {% endif %}
     </div>
   </div>
