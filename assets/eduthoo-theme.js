@@ -121,3 +121,17 @@ document.addEventListener('DOMContentLoaded', () => {
     handle.addEventListener('pointercancel', onPointerCancel);
   });
 });
+
+  // 3. PARALLAX FLOATING IMAGES ON SCROLL
+  const floatingItems = document.querySelectorAll('.ed-floating-wrapper');
+  if (floatingItems.length > 0) {
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      floatingItems.forEach(item => {
+        const speed = parseFloat(item.getAttribute('data-parallax-speed')) || 0;
+        // Apply a subtle Y translation based on scroll position and speed
+        // the CSS animation handles the constant shaking, this handles the scroll drag
+        item.style.transform = \	ranslateY(\px)\;
+      });
+    }, { passive: true });
+  }
