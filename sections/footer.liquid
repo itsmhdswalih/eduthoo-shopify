@@ -3,15 +3,23 @@
     <div>
       <h2>{{ shop.name }}</h2>
       <p>{{ section.settings.description }}</p>
+      
+      <div style="margin-top: 24px;">
+        <h3 style="font-size: 11px; letter-spacing: 0.1em; color: #777; margin-bottom: 8px;">CUSTOMER CARE</h3>
+        <p style="font-size: 14px; margin: 0; font-weight: 500;">
+          <a href="mailto:eduthooo@gmail.com" style="color: #000; text-decoration: underline;">eduthooo@gmail.com</a>
+        </p>
+        <p style="font-size: 12px; margin-top: 8px; color: #555;">We'll respond within 24 hours.</p>
+      </div>
     </div>
     <div>
-      <h3>Customer care</h3>
+      <h3>Menu</h3>
       {% for link in section.settings.menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}
     </div>
   </div>
   <div class="ed-container ed-footer-bottom">
     <span>© {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</span>
-    <span>Developed &amp; managed by Muhammad Swalih &amp; Ajmal Muhammad</span>
+    <span>Developed & managed by Muhammad Swalih & Ajmal Muhammad</span>
   </div>
 </footer>
 
@@ -20,7 +28,7 @@
   "name": "Footer",
   "settings": [
     { "type": "textarea", "id": "description", "label": "Brand description", "default": "Smart gadgets, useful technology and everyday essentials for modern living." },
-    { "type": "link_list", "id": "menu", "label": "Customer care menu" }
+    { "type": "link_list", "id": "menu", "label": "Footer menu" }
   ]
 }
 {% endschema %}

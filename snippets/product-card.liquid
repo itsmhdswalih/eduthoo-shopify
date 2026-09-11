@@ -1,5 +1,5 @@
 <article class="ed-product-card">
-  <a href="{{ product.url }}" class="ed-product-card__image">
+  <a href="{{ product.url | default: '#' }}" class="ed-product-card__image">
     {% if product.featured_image %}
       {{ product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '320,480,640,800', alt: product.title }}
     {% else %}
@@ -8,7 +8,22 @@
   </a>
   <div class="ed-product-card__content">
     <p>{{ product.type | default: 'EDUTHOO' | escape }}</p>
-    <h3><a href="{{ product.url }}">{{ product.title | escape }}</a></h3>
-    <span>{{ product.price | money }}</span>
+    <h3><a href="{{ product.url | default: '#' }}">{{ product.title | escape }}</a></h3>
+    <strong>{{ product.price | money }}</strong>
+    
+    {% if product != blank %}
+      <form method="post" action="/cart/add" class="ed-card-form">
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <button type="submit" class="ed-card-button">
+          ADD TO CART
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </button>
+      </form>
+    {% else %}
+      <a href="{{ routes.all_products_collection_url }}" class="ed-card-button">
+        VIEW OPTIONS
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </a>
+    {% endif %}
   </div>
 </article>
