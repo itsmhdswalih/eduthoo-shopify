@@ -184,7 +184,7 @@ img { display: block; max-width: 100%; }
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
   pointer-events: none;
-  z-index: -1; /* Behind text */
+  z-index: 1;
 }
 .ed-floating-item {
   position: absolute;
@@ -225,3 +225,5 @@ img { display: block; max-width: 100%; }
   .ed-floating-wrapper:nth-child(2) { top: 0% !important; left: 50% !important; }
   .ed-floating-wrapper:nth-child(3) { top: 70% !important; right: -5% !important; left: auto !important; }
 }
+/* Prevent horizontal scroll from floating items */
+body { overflow-x: hidden; }
