@@ -69,7 +69,22 @@ img { display: block; max-width: 100%; }
 .ed-dancing-letter.anim-6 { animation: edAnimRubber 0.65s ease-out forwards; }
 .ed-product-promises { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--ed-line); font-size: 11px; font-weight: 700; }
 .ed-cart-item { display: flex; justify-content: space-between; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--ed-line); }.ed-cart-total { margin: 24px 0; font-size: 20px; font-weight: 900; }.ed-page { max-width: 820px; }.ed-article { margin: 30px 0; }
-@media (max-width: 749px) {
+  @media (max-width: 749px) {
+    .ed-category-grid {
+      display: flex !important;
+      overflow-x: auto !important;
+      scroll-snap-type: x mandatory !important;
+      gap: 16px !important;
+      padding-bottom: 24px !important;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .ed-category-grid::-webkit-scrollbar { display: none; }
+    .ed-category-card {
+      min-width: 75% !important;
+      flex-shrink: 0 !important;
+      scroll-snap-align: center !important;
+    }
   .ed-product-media-gallery { position: static !important; } .ed-container { width: min(100% - 32px, 1360px); }.ed-nav { display: none; }.ed-header-actions { gap: 14px; }.ed-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }.ed-product-layout, .ed-footer-grid, .ed-hero-content { grid-template-columns: 1fr; }.ed-product-media { position: static; }.ed-product-promises, .ed-trust-bar .ed-container { grid-template-columns: 1fr; }.ed-footer-bottom, .ed-newsletter .ed-container { flex-direction: column; align-items: flex-start; }.ed-hero-content { min-height: auto; }.ed-hero-media { min-height: 0; }.ed-category-grid { grid-template-columns: 1fr; }.ed-section-heading--split { align-items: flex-start; flex-direction: column; }.ed-newsletter-form { width: 100%; }.ed-purchase-control { grid-template-columns: 1fr; }.ed-purchase-add { min-height: 58px; border-bottom: 1px solid #fff; }.ed-purchase-buy { min-height: 58px; }.ed-purchase-buy::before { display: none; } }
 /* Custom Card Button Styles */
 .ed-card-form { margin-top: 16px; }
@@ -113,7 +128,22 @@ img { display: block; max-width: 100%; }
 .ed-accordion summary svg { transition: transform 0.3s ease; }
 .ed-accordion details[open] summary svg { transform: rotate(180deg); }
 .ed-accordion .ed-accordion__content { padding-bottom: 20px; font-size: 14px; color: #555; line-height: 1.6; }
-@media (max-width: 749px) {
+  @media (max-width: 749px) {
+    .ed-category-grid {
+      display: flex !important;
+      overflow-x: auto !important;
+      scroll-snap-type: x mandatory !important;
+      gap: 16px !important;
+      padding-bottom: 24px !important;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .ed-category-grid::-webkit-scrollbar { display: none; }
+    .ed-category-card {
+      min-width: 75% !important;
+      flex-shrink: 0 !important;
+      scroll-snap-align: center !important;
+    }
   .ed-product-media-gallery { position: static !important; }
   h1 { font-size: clamp(32px, 7vw, 48px) !important; } .ed-hero-title { font-size: clamp(64px, 15vw, 90px) !important; }
   h2 { font-size: clamp(24px, 6vw, 32px) !important; }
@@ -125,7 +155,22 @@ img { display: block; max-width: 100%; }
 }
 
 /* Additional Mobile Header & Announcement Bar Tweaks */
-@media (max-width: 749px) {
+  @media (max-width: 749px) {
+    .ed-category-grid {
+      display: flex !important;
+      overflow-x: auto !important;
+      scroll-snap-type: x mandatory !important;
+      gap: 16px !important;
+      padding-bottom: 24px !important;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .ed-category-grid::-webkit-scrollbar { display: none; }
+    .ed-category-card {
+      min-width: 75% !important;
+      flex-shrink: 0 !important;
+      scroll-snap-align: center !important;
+    }
   .ed-product-media-gallery { position: static !important; }
   .announcement-bar { display: none !important; }
   .ed-header-grid { 
@@ -159,7 +204,22 @@ img { display: block; max-width: 100%; }
 .ed-float-3 { animation: floatAnim3 7s ease-in-out infinite alternate; }
 
 /* Mobile positioning adjustments */
-@media (max-width: 749px) {
+  @media (max-width: 749px) {
+    .ed-category-grid {
+      display: flex !important;
+      overflow-x: auto !important;
+      scroll-snap-type: x mandatory !important;
+      gap: 16px !important;
+      padding-bottom: 24px !important;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .ed-category-grid::-webkit-scrollbar { display: none; }
+    .ed-category-card {
+      min-width: 75% !important;
+      flex-shrink: 0 !important;
+      scroll-snap-align: center !important;
+    }
   .ed-product-media-gallery { position: static !important; }
   .ed-floating-item { width: 100px; height: 100px; }
   .ed-float-1 { top: 85%; left: -5%; }
@@ -180,14 +240,29 @@ img { display: block; max-width: 100%; }
   100% { transform: translateY(-25px) rotate(-4deg) scale(1.05); }
 }
 /* Fix Mobile Overlap */
-@media (max-width: 749px) {
+  @media (max-width: 749px) {
+    .ed-category-grid {
+      display: flex !important;
+      overflow-x: auto !important;
+      scroll-snap-type: x mandatory !important;
+      gap: 16px !important;
+      padding-bottom: 24px !important;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .ed-category-grid::-webkit-scrollbar { display: none; }
+    .ed-category-card {
+      min-width: 75% !important;
+      flex-shrink: 0 !important;
+      scroll-snap-align: center !important;
+    }
   .ed-product-media-gallery { position: static !important; }
   .ed-floating-wrapper:nth-child(1) { top: 80% !important; left: -10% !important; }
   .ed-floating-wrapper:nth-child(2) { top: 0% !important; left: 50% !important; }
   .ed-floating-wrapper:nth-child(3) { top: 70% !important; right: -5% !important; left: auto !important; }
 }
 /* Prevent horizontal scroll from floating items */
-body { overflow-x: hidden; }
+body { overflow-x: clip; }
 .ed-floating-wrapper {
   position: absolute;
   width: 150px; height: 150px;
@@ -246,7 +321,22 @@ body { overflow-x: hidden; }
 .ed-purchase-buy-new { background: #000; color: #fff; border: 1px solid #000; }
 .ed-purchase-buy-new:hover { background: #222; }
 
-@media (max-width: 749px) {
+  @media (max-width: 749px) {
+    .ed-category-grid {
+      display: flex !important;
+      overflow-x: auto !important;
+      scroll-snap-type: x mandatory !important;
+      gap: 16px !important;
+      padding-bottom: 24px !important;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .ed-category-grid::-webkit-scrollbar { display: none; }
+    .ed-category-card {
+      min-width: 75% !important;
+      flex-shrink: 0 !important;
+      scroll-snap-align: center !important;
+    }
   .ed-product-media-gallery { position: static !important; }
   .ed-sticky-purchase-wrapper {
     position: sticky;
@@ -309,7 +399,22 @@ body { overflow-x: hidden; }
 
 
 /* App-like Mobile Optimizations */
-@media (max-width: 749px) {
+  @media (max-width: 749px) {
+    .ed-category-grid {
+      display: flex !important;
+      overflow-x: auto !important;
+      scroll-snap-type: x mandatory !important;
+      gap: 16px !important;
+      padding-bottom: 24px !important;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .ed-category-grid::-webkit-scrollbar { display: none; }
+    .ed-category-card {
+      min-width: 75% !important;
+      flex-shrink: 0 !important;
+      scroll-snap-align: center !important;
+    }
   .ed-section { padding: 40px 0 !important; }
   .ed-hero { padding: 24px 0 40px !important; }
   .ed-hero-content { gap: 24px !important; }
@@ -321,3 +426,5 @@ body { overflow-x: hidden; }
   .ed-cart-drawer-content { width: 100% !important; max-width: 100% !important; }
   .site-header { background: rgba(255, 255, 255, 0.4) !important; backdrop-filter: saturate(180%) blur(30px) !important; -webkit-backdrop-filter: saturate(180%) blur(30px) !important; border-bottom: 1px solid rgba(0,0,0,0.05) !important; }
 }
+
+
