@@ -21,14 +21,6 @@
         {% endif %}
       </div>
       
-      <div class="ed-description rte">
-        {% if product.description != blank %}
-          {{ product.description }}
-        {% else %}
-          <p>Experience the perfect blend of modern minimalist design and cutting-edge technology. This premium product is crafted to elevate your everyday lifestyle with uncompromising quality and performance.</p>
-        {% endif %}
-      </div>
-      
       {% form 'product', product, id: 'eduthoo-product-form' %}
         <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id | default: '' }}">
         <label class="ed-quantity" for="Quantity-{{ section.id }}">Quantity <input id="Quantity-{{ section.id }}" type="number" name="quantity" min="1" value="1"></label>
@@ -63,6 +55,13 @@
           <span class="ed-swipe-hint">swipe to checkout</span>
         </div>
       {% endform %}
+        <div class="ed-description rte">
+        {% if product.description != blank %}
+          {{ product.description }}
+        {% else %}
+          <p>Experience the perfect blend of modern minimalist design and cutting-edge technology. This premium product is crafted to elevate your everyday lifestyle with uncompromising quality and performance.</p>
+        {% endif %}
+      </div>
       
       <div class="ed-product-promises">
         <span>Free delivery above ₹999</span>
@@ -92,3 +91,4 @@
 {% schema %}
 { "name": "Main product", "settings": [] }
 {% endschema %}
+

@@ -1,22 +1,13 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // 1. DANCING LETTERS PHYSICS INTERACTION
-  const dancingLetters = document.querySelectorAll('.ed-dancing-letters .ed-dancing-letter');
-  dancingLetters.forEach((letter, index) => {
-    const triggerDance = () => {
-      const animClass = `anim-${index % 7}`;
-      if (!letter.classList.contains(animClass)) {
-        letter.classList.add(animClass);
-      }
-    };
-    letter.addEventListener('pointerenter', triggerDance);
-    letter.addEventListener('touchstart', triggerDance, { passive: true });
-    letter.addEventListener('animationend', (e) => {
-      letter.classList.remove(`anim-${index % 7}`);
-    });
-  });
+import re
 
-  
-  
+with open('assets/eduthoo-theme.js', 'r', encoding='utf-8') as f:
+    content = f.read()
+
+start_idx = content.find('// 2. SWIPE TO BUY & AJAX CART DRAWER')
+if start_idx != -1:
+    content = content[:start_idx]
+
+new_js = r'''
   // 2. SWIPE TO BUY & AJAX CART DRAWER
   
   // Drawer Elements
@@ -96,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Override ADD button
-  document.querySelectorAll('[data-add-button], .ed-card-button').forEach(btn => {
+  document.querySelectorAll('[data-add-button]').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const form = btn.closest('form');
@@ -224,3 +215,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+'''
+
+with open('assets/eduthoo-theme.js', 'w', encoding='utf-8') as f:
+    f.write(content + new_js)
+print("JS rewrite complete with raw string variables.")
