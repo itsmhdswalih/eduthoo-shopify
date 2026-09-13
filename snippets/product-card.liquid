@@ -1,29 +1,68 @@
-<article class="ed-product-card">
-  <a href="{{ product.url | default: '#' }}" class="ed-product-card__image">
-    {% if product.featured_image %}
-      {{ product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '320,480,640,800', alt: product.title }}
-    {% else %}
-      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
-    {% endif %}
-  </a>
-  <div class="ed-product-card__content">
-    <p>{{ product.type | default: 'EDUTHOO' | escape }}</p>
-    <h3><a href="{{ product.url | default: '#' }}">{{ product.title | escape }}</a></h3>
-    <strong>{{ product.price | money }}</strong>
+<article style="display: flex; flex-direction: column; gap: 12px; padding: 0; background: transparent; border: none; box-shadow: none; width: 100%;">
+  
+  <!-- Image Box -->
+  <div style="position: relative; background: #f4f5f7; border-radius: 20px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; overflow: hidden;">
     
-    {% if product != blank %}
-      <form method="post" action="/cart/add" class="ed-card-form">
-        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-        <button type="submit" class="ed-card-button">
-          ADD TO CART
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+    <!-- Tag/Badge -->
+    <span style="position: absolute; top: 12px; right: 12px; background: #fff; color: #000; font-size: 10px; font-weight: 800; padding: 4px 12px; border-radius: 50px; z-index: 2; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+      {{ product.type | default: 'Gadget' }}
+    </span>
+
+    <a href="{{ product.url | default: '#' }}" style="display: block; width: 100%; height: 100%; padding: 24px;">
+      {% if product.featured_image %}
+        <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title | escape }}" loading="lazy" style="width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      {% else %}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </a>
+  </div>
+
+  <!-- Info -->
+  <div style="display: flex; flex-direction: column; gap: 6px; padding: 0 4px;">
+    
+    <!-- Title: Truncated to 1 line with ellipsis -->
+    <a href="{{ product.url | default: '#' }}" style="font-size: 15px; font-weight: 800; color: #000; text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; line-height: 1.2;">
+      {{ product.title | default: 'Example Product' }}
+    </a>
+    
+    <!-- Ratings & Price Row -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+      <div style="display: flex; align-items: center; gap: 4px; font-size: 11px; color: #777; font-weight: 600;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#ffb800" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        <span>4.8 (120 Reviews)</span>
+      </div>
+      <div style="font-size: 15px; font-weight: 800; color: #000;">
+        {{ product.price | money }}
+      </div>
+    </div>
+
+    <!-- Actions (Add to Cart / Buy Now) side by side -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+      
+      <form method="post" action="/cart/add" style="margin: 0; width: 100%;">
+        <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+        <button type="submit" class="ed-btn-card ed-btn-outline" {% unless product.available %}disabled{% endunless %} style="width: 100%; height: 36px; border-radius: 50px; border: 1px solid #e0e0e0; background: #fff; color: #000; font-size: 11.5px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0 4px; white-space: nowrap; transition: all 0.2s;" onmouseover="this.style.borderColor='#000'" onmouseout="this.style.borderColor='#e0e0e0'">
+          {% if product.available %}Add to Cart{% else %}Sold Out{% endif %}
         </button>
       </form>
-    {% else %}
-      <a href="{{ routes.all_products_collection_url }}" class="ed-card-button">
-        VIEW OPTIONS
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-      </a>
-    {% endif %}
+      
+      <form method="post" action="/cart/add" style="margin: 0; width: 100%;">
+        <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+        <input type="hidden" name="return_to" value="/checkout" />
+        <button type="submit" class="ed-btn-card ed-btn-solid" {% unless product.available %}disabled{% endunless %} style="width: 100%; height: 36px; border-radius: 50px; border: 1px solid #000; background: #000; color: #fff; font-size: 11.5px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0 4px; white-space: nowrap; transition: all 0.2s;" onmouseover="this.style.background='#333'" onmouseout="this.style.background='#000'">
+          Buy Now
+        </button>
+      </form>
+
+    </div>
   </div>
 </article>
+
+<style>
+  @media (max-width: 749px) {
+    .ed-btn-card {
+      font-size: 9.5px !important;
+      height: 32px !important;
+    }
+  }
+</style>
