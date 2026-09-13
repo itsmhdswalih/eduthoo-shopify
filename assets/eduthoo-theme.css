@@ -224,3 +224,28 @@ body { overflow-x: hidden; }
 
 
 
+
+/* New Quantity Selector & Buttons */
+.ed-quantity-selector { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border: 1px solid var(--ed-line); border-radius: 4px; margin-bottom: 24px; }
+.ed-quantity-label { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; }
+.ed-quantity-controls { display: flex; align-items: center; }
+.ed-qty-btn { background: none; border: none; font-size: 18px; font-weight: 400; padding: 0 12px; cursor: pointer; color: #555; }
+.ed-qty-btn:hover { color: #000; }
+.ed-quantity-controls input { width: 40px; text-align: center; border: none; background: transparent; font-size: 14px; font-weight: 800; pointer-events: none; }
+.ed-quantity-controls input::-webkit-outer-spin-button, .ed-quantity-controls input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+.ed-sticky-purchase-wrapper { display: grid; grid-template-columns: 1fr; gap: 12px; position: sticky; top: 120px; z-index: 10; margin-bottom: 24px; padding-bottom: 24px; }
+.ed-purchase-add-new, .ed-purchase-buy-new { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; height: 58px; font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; border-radius: 4px; transition: all 0.2s ease; }
+.ed-purchase-add-new { background: #fff; color: #000; border: 1px solid #000; }
+.ed-purchase-add-new:hover { background: #f9f9f9; }
+.ed-purchase-buy-new { background: #000; color: #fff; border: 1px solid #000; }
+.ed-purchase-buy-new:hover { background: #222; }
+
+@media (max-width: 749px) {
+  .ed-sticky-purchase-wrapper {
+    position: sticky;
+    bottom: 20px;
+    top: auto;
+    padding-bottom: 0;
+  }
+}

@@ -121,25 +121,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Handle Swipe logic AND BUY button direct checkout
-  document.querySelectorAll('[data-wave-swipe-control]').forEach((control) => {
-    const handle = control.querySelector('[data-swipe-handle]');
-    const buyButton = control.querySelector('[data-buy-button]');
-    const form = control.closest('form');
-    if (!handle || !buyButton || !form) return;
+  
+  // Direct BUY button
+  document.querySelectorAll('[data-buy-button-direct]').forEach((buyButton) => {
+    const form = buyButton.closest('form');
+    if (!form) return;
 
-    let startX = null;
-    let isDragging = false;
-    let currentOffset = 0;
-    
-    const getTargetMaxDrag = () => {
-      return (control.offsetWidth / 2) - (handle.offsetWidth / 2) - 4;
-    };
-    
-    let maxDrag = getTargetMaxDrag();
-
-    const triggerCheckout = () => {
-      const buyLabel = control.querySelector('[data-buy-label]');
+    buyButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      const buyLabel = buyButton.querySelector('[data-buy-label]');
       if (buyLabel) buyLabel.textContent = 'CHECKOUT...';
       
       if (form.dataset.submitting) return;
@@ -156,59 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .catch(error => {
         form.submit();
       });
-    };
-    
-    // Direct Click on BUY button triggers checkout!
-    buyButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      triggerCheckout();
     });
-
-    const updateVisuals = (offset) => {
-      handle.style.transform = `translateX(${-offset}px)`;
-    };
-
-    const onPointerDown = (e) => {
-      maxDrag = getTargetMaxDrag();
-      startX = e.clientX;
-      isDragging = true;
-      handle.setPointerCapture?.(e.pointerId);
-      handle.style.transition = 'none';
-    };
-
-    const onPointerMove = (e) => {
-      if (!isDragging || startX === null) return;
-      const diff = startX - e.clientX;
-      currentOffset = Math.max(0, Math.min(maxDrag, diff));
-      updateVisuals(currentOffset);
-    };
-
-    const onPointerUp = () => {
-      if (!isDragging) return;
-      isDragging = false;
-      
-      if (currentOffset >= maxDrag * 0.65) {
-        handle.style.transform = `translateX(${-maxDrag}px)`;
-        triggerCheckout();
-      } else {
-        currentOffset = 0;
-        handle.style.transition = 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
-        updateVisuals(0);
-      }
-    };
-
-    const onPointerCancel = () => {
-      isDragging = false;
-      startX = null;
-      currentOffset = 0;
-      handle.style.transition = 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
-      updateVisuals(0);
-    };
-
-    handle.addEventListener('pointerdown', onPointerDown);
-    handle.addEventListener('pointermove', onPointerMove);
-    handle.addEventListener('pointerup', onPointerUp);
-    handle.addEventListener('pointercancel', onPointerCancel);
   });
 
   // 3. PARALLAX FLOATING IMAGES ON SCROLL
