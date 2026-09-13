@@ -3,11 +3,97 @@
     
     <!-- Hero Text -->
     <div class="ed-hero-copy" style="max-width: 800px; margin: 0 auto 60px;">
-      <p class="ed-eyebrow" style="margin-bottom: 16px; font-size: 11px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: #555;">{{ section.settings.eyebrow | escape }}</p>
       
-      <h1 class="ed-hero-title-bento" style="font-family: var(--font-serif); font-size: clamp(36px, 6vw, 64px); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; color: #000; text-transform: capitalize; margin-bottom: 16px;">
-        {{ section.settings.heading | escape }}
-      </h1>
+      
+            <!-- SVG Filters for Morphing Effect -->
+      <svg id="filters" class="visually-hidden" style="display: none;" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <filter id="threshold">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 255 -140" />
+          </filter>
+        </defs>
+      </svg>
+
+      <!-- Morphing Text Container -->
+      <div id="ed-morph-container" style="position: relative; height: clamp(50px, 8vw, 80px); width: 100%; margin: 0 auto 24px; filter: url(#threshold) blur(0.6px); font-family: var(--font-serif); font-size: clamp(36px, 6.5vw, 72px); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; color: #000; text-transform: capitalize;">
+        <span id="ed-morph-text1" style="position: absolute; width: 100%; text-align: center; left: 0; top: 0; display: inline-block;"></span>
+        <span id="ed-morph-text2" style="position: absolute; width: 100%; text-align: center; left: 0; top: 0; display: inline-block;"></span>
+      </div>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const texts = [
+            "Elevate",
+            "Your Life",
+            "With Smart",
+            "Essentials"
+          ];
+          
+          const elts = {
+            text1: document.getElementById("ed-morph-text1"),
+            text2: document.getElementById("ed-morph-text2")
+          };
+          
+          if (!elts.text1 || !elts.text2) return;
+          
+          const morphTime = 1.5;
+          const cooldownTime = 0.8;
+          
+          let textIndex = 0;
+          let time = new Date();
+          let morph = 0;
+          let cooldown = cooldownTime;
+          
+          elts.text1.textContent = texts[textIndex % texts.length];
+          elts.text2.textContent = texts[(textIndex + 1) % texts.length];
+          
+          function doMorph() {
+            morph -= cooldown;
+            cooldown = 0;
+            let fraction = morph / morphTime;
+            if (fraction > 1) {
+              cooldown = cooldownTime;
+              fraction = 1;
+            }
+            setStyles(fraction);
+            if (fraction === 1) {
+              textIndex++;
+            }
+          }
+          
+          function setStyles(fraction) {
+            elts.text2.style.filter = \lur(\px)\;
+            elts.text2.style.opacity = \\%\;
+            
+            let invertedFraction = 1 - fraction;
+            elts.text1.style.filter = \lur(\px)\;
+            elts.text1.style.opacity = \\%\;
+            
+            elts.text1.textContent = texts[textIndex % texts.length];
+            elts.text2.textContent = texts[(textIndex + 1) % texts.length];
+          }
+          
+          function doCooldown() {
+            morph = 0;
+            elts.text2.style.filter = "none";
+            elts.text2.style.opacity = "100%";
+            elts.text1.style.filter = "none";
+            elts.text1.style.opacity = "0%";
+          }
+          
+          function animate() {
+            requestAnimationFrame(animate);
+            let newTime = new Date();
+            let dt = (newTime.getTime() - time.getTime()) / 1000;
+            time = newTime;
+            cooldown -= dt;
+            if (cooldown <= 0) doMorph();
+            else doCooldown();
+          }
+          
+          animate();
+        });
+      </script>
       
       {% if section.settings.text != blank %}
       <div class="rte" style="max-width: 600px; margin: 0 auto; font-size: 16px; color: #555; line-height: 1.6;">
@@ -92,4 +178,5 @@
   "presets": [{ "name": "Hero" }]
 }
 {% endschema %}
+
 
