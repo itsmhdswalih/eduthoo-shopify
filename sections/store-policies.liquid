@@ -1,37 +1,91 @@
-<section class="ed-section ed-store-policies" style="background-color: #fafafa; padding: 80px 0;">
+<section class="ed-section ed-store-policies" style="background-color: #fafafa; padding: 60px 0;">
   <div class="ed-container">
-    <div class="ed-section-heading" style="text-align: center; margin-bottom: 60px;">
+    <div class="ed-section-heading" style="text-align: center; margin-bottom: 40px;">
       <p style="font-size: 11px; letter-spacing: 0.12em; font-weight: 800; color: #555;">OUR COMMITMENT</p>
       <h2 style="font-family: var(--font-serif); font-size: 32px; font-weight: 900; margin-top: 12px;">Store Policies</h2>
     </div>
     
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; text-align: center;">
-      <div class="ed-feature-card">
-        <div style="width: 48px; height: 48px; background: #000; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-        </div>
-        <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 12px; letter-spacing: 0.05em;">SHIPPING POLICY</h3>
-        <p style="font-size: 14px; color: #555; line-height: 1.6;">Your product will be delivered to your doorstep within <strong>7 days</strong> of placing the order.</p>
-      </div>
+    <div class="ed-policy-accordion" style="max-width: 700px; margin: 0 auto; background: #fff; border-radius: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.04); border: 1px solid var(--ed-line); overflow: hidden;">
       
-      <div class="ed-feature-card">
-        <div style="width: 48px; height: 48px; background: #000; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+      <div class="ed-acc-item" style="border-bottom: 1px solid var(--ed-line);">
+        <button class="ed-acc-trigger" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 24px; background: transparent; border: none; cursor: pointer; text-align: left; font-size: 15px; font-weight: 800; letter-spacing: 0.05em; color: #000;">
+          <span style="display: flex; align-items: center; gap: 12px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+            SHIPPING POLICY
+          </span>
+          <span class="ed-acc-icon" style="font-size: 24px; font-weight: 300; line-height: 1; transition: transform 0.3s ease;">+</span>
+        </button>
+        <div class="ed-acc-content" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; padding: 0 24px; background: #fafafa;">
+          <p style="font-size: 14px; color: #555; line-height: 1.6; margin: 0; padding-bottom: 24px;">Your product will be delivered to your doorstep within <strong>7 days</strong> of placing the order. We partner with secure and fast logistics.</p>
         </div>
-        <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 12px; letter-spacing: 0.05em;">PAYMENT OPTIONS</h3>
-        <p style="font-size: 14px; color: #555; line-height: 1.6;">We offer <strong>Cash on Delivery (COD) ONLY</strong>. There are no online payment options available at this time.</p>
       </div>
-      
-      <div class="ed-feature-card">
-        <div style="width: 48px; height: 48px; background: #000; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"></path><path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"></path><path d="M12 3v6"></path></svg>
+
+      <div class="ed-acc-item" style="border-bottom: 1px solid var(--ed-line);">
+        <button class="ed-acc-trigger" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 24px; background: transparent; border: none; cursor: pointer; text-align: left; font-size: 15px; font-weight: 800; letter-spacing: 0.05em; color: #000;">
+          <span style="display: flex; align-items: center; gap: 12px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+            PAYMENT OPTIONS
+          </span>
+          <span class="ed-acc-icon" style="font-size: 24px; font-weight: 300; line-height: 1; transition: transform 0.3s ease;">+</span>
+        </button>
+        <div class="ed-acc-content" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; padding: 0 24px; background: #fafafa;">
+          <p style="font-size: 14px; color: #555; line-height: 1.6; margin: 0; padding-bottom: 24px;">We currently offer <strong>Cash on Delivery (COD) ONLY</strong>. There are no online payment options available at this time. Please hand over the exact cash amount to our delivery executive.</p>
         </div>
-        <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 12px; letter-spacing: 0.05em;">RETURNS & REPLACEMENTS</h3>
-        <p style="font-size: 14px; color: #555; line-height: 1.6;">Replacements are only provided for damaged items, for which an <strong>unboxing video is mandatory</strong>. <a href="/pages/contact" style="color: #000; text-decoration: underline; font-weight: bold;">Contact Us</a> for support.</p>
       </div>
+
+      <div class="ed-acc-item">
+        <button class="ed-acc-trigger" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 24px; background: transparent; border: none; cursor: pointer; text-align: left; font-size: 15px; font-weight: 800; letter-spacing: 0.05em; color: #000;">
+          <span style="display: flex; align-items: center; gap: 12px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"></path><path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"></path><path d="M12 3v6"></path></svg>
+            RETURNS & REPLACEMENTS
+          </span>
+          <span class="ed-acc-icon" style="font-size: 24px; font-weight: 300; line-height: 1; transition: transform 0.3s ease;">+</span>
+        </button>
+        <div class="ed-acc-content" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; padding: 0 24px; background: #fafafa;">
+          <p style="font-size: 14px; color: #555; line-height: 1.6; margin: 0; padding-bottom: 24px;">We have a strict No-Return policy. Replacements are only provided for damaged items, for which an <strong>unboxing video is strictly mandatory</strong>. <a href="/pages/contact" style="color: #000; text-decoration: underline; font-weight: bold;">Contact Us</a> for any support regarding damaged items.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const triggers = document.querySelectorAll('.ed-acc-trigger');
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', function() {
+        const parent = this.parentElement;
+        const content = this.nextElementSibling;
+        const icon = this.querySelector('.ed-acc-icon');
+        
+        // Close all others
+        document.querySelectorAll('.ed-acc-item').forEach(item => {
+          if (item !== parent) {
+            item.classList.remove('is-open');
+            item.querySelector('.ed-acc-content').style.maxHeight = null;
+            item.querySelector('.ed-acc-content').style.paddingTop = '0';
+            const otherIcon = item.querySelector('.ed-acc-icon');
+            if(otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+          }
+        });
+
+        // Toggle current
+        if (parent.classList.contains('is-open')) {
+          parent.classList.remove('is-open');
+          content.style.maxHeight = null;
+          content.style.paddingTop = '0';
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          parent.classList.add('is-open');
+          content.style.paddingTop = '16px';
+          content.style.maxHeight = content.scrollHeight + 40 + "px";
+          icon.style.transform = 'rotate(45deg)';
+        }
+      });
+    });
+  });
+</script>
 
 {% schema %}
 {
