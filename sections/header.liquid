@@ -7,7 +7,7 @@
       {% if settings.logo != blank %}
         <span style="width: {{ settings.logo_width }}px;">{{ settings.logo | image_url: width: 192 | image_tag: widths: '64,96,128,192', alt: shop.name }}</span>
       {% else %}
-        <span class="ed-logo-fallback">{{ shop.name | escape }}</span>
+        <span class="ed-logo-fallback"><img src="{{ 'eduthoo-emblem-clean.png' | asset_url }}" alt="{{ shop.name | escape }}" width="46" height="46" loading="eager"></span>
       {% endif %}
     </a>
     <div class="ed-header-actions">
@@ -26,6 +26,7 @@
   ]
 }
 {% endschema %}
+
 
 
 
