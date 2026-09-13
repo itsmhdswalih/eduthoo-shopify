@@ -95,6 +95,16 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(cart => renderCartDrawer(cart));
   };
 
+  
+  // Intercept cart links to open drawer
+  document.querySelectorAll('a[href="/cart"], a[href*="routes.cart_url"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      fetchCartAndRender();
+      openDrawer();
+    });
+  });
+
   // Override ADD button
   document.querySelectorAll('[data-add-button], .ed-card-button').forEach(btn => {
     btn.addEventListener('click', (e) => {

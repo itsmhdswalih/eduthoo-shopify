@@ -1,12 +1,21 @@
 <section class="ed-section">
   <div class="ed-container ed-product-layout">
-    <div class="ed-product-media">
-      {% if product.featured_image %}
-        {{ product.featured_image | image_url: width: 1200 | image_tag: widths: '600,900,1200', alt: product.title }}
-      {% else %}
-        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
-      {% endif %}
-    </div>
+          <div class="ed-product-media-gallery">
+        <div class="ed-product-media">
+          {% if product.featured_image %}
+            <img src="{{ product.featured_image | image_url: width: 1200 }}" id="MainProductImage" alt="{{ product.title | escape }}">
+          {% else %}
+            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+        </div>
+        {% if product.media.size > 1 %}
+          <div class="ed-product-thumbnails">
+            {% for media in product.media %}
+              <img src="{{ media | image_url: width: 300 }}" alt="{{ product.title | escape }}" onclick="document.getElementById('MainProductImage').src = this.src.replace('width=300', 'width=1200'); document.querySelectorAll('.ed-product-thumbnails img').forEach(img => img.classList.remove('is-active')); this.classList.add('is-active');" class="ed-product-thumb {% if forloop.first %}is-active{% endif %}">
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
     <div class="ed-product-info">
       <p class="ed-eyebrow">{{ product.type | default: 'EDUTHOO' | escape }}</p>
       <h1>{{ product.title | default: 'EDUTHOO Premium Product' | escape }}</h1>
@@ -69,5 +78,6 @@
 {% schema %}
 { "name": "Main product", "settings": [] }
 {% endschema %}
+
 
 
