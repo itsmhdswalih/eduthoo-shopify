@@ -131,7 +131,7 @@ img { display: block; max-width: 100%; }
     padding-left: 0 !important; 
   }
   .ed-logo { margin-left: -8px; }
-  .ed-logo img { width: 36px; height: 36px; }
+  .ed-logo img { width: auto; height: 36px; object-fit: contain; }
 }
 
 /* Floating Interactive Elements */
@@ -221,5 +221,6 @@ body { overflow-x: hidden; }
 .ed-drawer-item-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
 .ed-drawer-item-remove { font-size: 12px; color: #999; text-decoration: underline; cursor: pointer; border: none; background: none; padding: 0; }
 .ed-drawer-item-remove:hover { color: #000; }
+
 
 
