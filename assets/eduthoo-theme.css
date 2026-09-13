@@ -258,3 +258,24 @@ body { overflow-x: hidden; }
 .ed-product-thumb.is-active, .ed-product-thumb:hover { opacity: 1; border-color: #000; }
 
 
+
+/* Curved UI Updates */
+.ed-quantity-label-curved { font-size: 15px; margin-bottom: 12px; color: #333; }
+.ed-form-actions-curved { display: flex; flex-direction: column; gap: 16px; position: sticky; bottom: 20px; padding-bottom: 24px; z-index: 10; margin-bottom: 24px; }
+.ed-form-row-1 { display: flex; gap: 12px; height: 50px; }
+.ed-quantity-controls-curved { display: flex; align-items: center; justify-content: space-between; width: 140px; border: 1px solid #e0e0e0; border-radius: 50px; padding: 0 16px; background: #fff; }
+.ed-qty-btn-curved { background: transparent; border: none; font-size: 20px; font-weight: 300; cursor: pointer; color: #333; padding: 0 5px; }
+.ed-qty-divider { width: 1px; height: 24px; background: #eee; }
+.ed-qty-input-curved { width: 40px; text-align: center; border: none; font-size: 16px; font-weight: 500; pointer-events: none; background: transparent; }
+.ed-btn-add-curved { flex: 1; border-radius: 50px; background: linear-gradient(90deg, #0088ff 0%, #00aaff 100%); color: #fff; font-size: 16px; font-weight: 500; border: none; cursor: pointer; transition: all 0.2s ease; }
+.ed-btn-add-curved:hover { filter: brightness(1.1); }
+.ed-btn-buy-curved { width: 100%; height: 50px; border-radius: 50px; background: linear-gradient(180deg, #3a4148 0%, #0c1218 100%); color: #fff; font-size: 16px; font-weight: 500; border: none; cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,0.15); transition: all 0.2s ease; }
+.ed-btn-buy-curved:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(0,0,0,0.2); }
+
+/* Global Curve Updates */
+.ed-card { border-radius: 20px !important; overflow: hidden; }
+.ed-product-thumb { border-radius: 12px !important; }
+.ed-card-button { border-radius: 50px !important; }
+.ed-cart-checkout { border-radius: 50px !important; }
+.ed-drawer-item-remove { border-radius: 50px !important; padding: 4px 12px !important; }
+.ed-drawer { border-top-left-radius: 24px; border-bottom-left-radius: 24px; }

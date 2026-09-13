@@ -22,13 +22,25 @@
               {% form 'product', product, id: 'eduthoo-product-form' %}
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id | default: '' }}">
           
-          <div class="ed-quantity-selector">
-            <span class="ed-quantity-label">Quantity</span>
-            <div class="ed-quantity-controls">
-              <button type="button" class="ed-qty-btn" onclick="this.nextElementSibling.stepDown()">-</button>
-              <input id="Quantity-{{ section.id }}" type="number" name="quantity" min="1" value="1" readonly>
-              <button type="button" class="ed-qty-btn" onclick="this.previousElementSibling.stepUp()">+</button>
+                    <div class="ed-quantity-label-curved">Quantity:</div>
+          <div class="ed-form-actions-curved">
+            <div class="ed-form-row-1">
+              <div class="ed-quantity-controls-curved">
+                <button type="button" class="ed-qty-btn-curved" onclick="this.nextElementSibling.nextElementSibling.stepDown()">-</button>
+                <div class="ed-qty-divider"></div>
+                <input id="Quantity-{{ section.id }}" class="ed-qty-input-curved" type="number" name="quantity" min="1" value="1" readonly>
+                <div class="ed-qty-divider"></div>
+                <button type="button" class="ed-qty-btn-curved" onclick="this.previousElementSibling.previousElementSibling.stepUp()">+</button>
+              </div>
+              
+              <button class="ed-btn-add-curved" type="submit" name="add" data-add-button aria-label="Add to cart" {% if product == blank %}disabled{% endif %}>
+                Add to Cart
+              </button>
             </div>
+            
+            <button class="ed-btn-buy-curved" type="button" data-buy-button-direct {% if product == blank or product.selected_or_first_available_variant.available == false %}disabled{% endif %} aria-label="Buy now">
+              Buy Now
+            </button>
           </div>
           
           <div class="ed-sticky-purchase-wrapper">
@@ -78,6 +90,7 @@
 {% schema %}
 { "name": "Main product", "settings": [] }
 {% endschema %}
+
 
 
 
