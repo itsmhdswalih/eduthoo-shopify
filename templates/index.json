@@ -5,7 +5,8 @@
     "featured": { "type": "featured-collection", "settings": {} },
     "brand_features": { "type": "brand-features", "settings": {} },
     "trust": { "type": "trust-bar", "settings": {} },
+    "policies": { "type": "store-policies", "settings": {} },
     "newsletter": { "type": "newsletter", "settings": {} }
   },
-  "order": ["hero", "categories", "featured", "brand_features", "trust", "newsletter"]
+  "order": ["hero", "categories", "featured", "brand_features", "policies", "trust", "newsletter"]
 }

@@ -4,6 +4,10 @@
       "type": "main-product",
       "settings": {}
     },
+    "policies": {
+      "type": "store-policies",
+      "settings": {}
+    },
     "brand_features": {
       "type": "brand-features",
       "settings": {}
@@ -15,6 +19,7 @@
   },
   "order": [
     "main",
+    "policies",
     "brand_features",
     "related"
   ]
