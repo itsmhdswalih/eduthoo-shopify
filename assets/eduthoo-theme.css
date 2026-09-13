@@ -6,8 +6,9 @@ a { color: inherit; text-decoration: none; }
 button, input { font: inherit; }
 img { display: block; max-width: 100%; }
 .ed-container { width: min(1360px, calc(100% - 48px)); margin: 0 auto; }.announcement-bar { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 9px 16px; color: #fff; background: #000; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-align: center; }
-.site-header { position: fixed !important; top: 0; left: 0; width: 100%; z-index: 9999; background: rgba(255, 255, 255, 0.5) !important; backdrop-filter: blur(24px) saturate(180%) !important; -webkit-backdrop-filter: blur(24px) saturate(180%) !important; border-bottom: 1px solid rgba(0,0,0,0.05) !important; transition: all 0.3s ease; }
-body { padding-top: 76px; }
+.site-header { position: fixed !important; top: 0; left: 0; width: 100%; z-index: 9999; background: rgba(255, 255, 255, 0.6) !important; backdrop-filter: blur(30px) saturate(180%) !important; -webkit-backdrop-filter: blur(30px) saturate(180%) !important; border-bottom: none !important; transition: all 0.3s ease; padding-bottom: 24px !important; -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 24px), transparent 100%); mask-image: linear-gradient(to bottom, black calc(100% - 24px), transparent 100%); pointer-events: none; }
+.site-header > * { pointer-events: auto; }
+body { padding-top: 86px; }
 .ed-header-grid { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; min-height: 76px; }
 .ed-nav, .ed-header-actions { display: flex; align-items: center; gap: 24px; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
 .ed-header-actions { justify-content: flex-end; }
@@ -425,7 +426,7 @@ body { overflow-x: clip; }
   .ed-feature-card, .ed-policy-card, .ed-acc-trigger { padding: 20px !important; }
   .ed-header-grid { min-height: 60px !important; }
   .ed-cart-drawer-content { width: 100% !important; max-width: 100% !important; }
-  .site-header { background: rgba(255, 255, 255, 0.4) !important; backdrop-filter: saturate(180%) blur(30px) !important; -webkit-backdrop-filter: saturate(180%) blur(30px) !important; border-bottom: 1px solid rgba(0,0,0,0.05) !important; }
+  .site-header { border-bottom: none !important; }
 }
 
 
@@ -453,3 +454,4 @@ body { overflow-x: clip; }
 
 
 @media (max-width: 749px) { body { padding-top: 60px !important; } }
+
