@@ -43,17 +43,7 @@
             </button>
           </div>
           
-          <div class="ed-sticky-purchase-wrapper">
-            <button class="ed-purchase-add-new" type="submit" name="add" data-add-button aria-label="Add to cart" {% if product == blank %}disabled{% endif %}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-              <span>ADD TO CART</span>
-            </button>
-            
-            <button class="ed-purchase-buy-new" type="button" data-buy-button-direct {% if product == blank or product.selected_or_first_available_variant.available == false %}disabled{% endif %} aria-label="Buy now">
-              <span data-buy-label>BUY AT {% if product != blank %}{{ product.selected_or_first_available_variant.price | money }}{% else %}₹2,999{% endif %}</span>
-            </button>
-          </div>
-        {% endform %}
+          {% endform %}
         <div class="ed-description rte">
         {% if product.description != blank %}
           {{ product.description }}
@@ -90,6 +80,7 @@
 {% schema %}
 { "name": "Main product", "settings": [] }
 {% endschema %}
+
 
 
 

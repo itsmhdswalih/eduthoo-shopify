@@ -267,7 +267,7 @@ body { overflow-x: hidden; }
 .ed-qty-btn-curved { background: transparent; border: none; font-size: 20px; font-weight: 300; cursor: pointer; color: #333; padding: 0 5px; }
 .ed-qty-divider { width: 1px; height: 24px; background: #eee; }
 .ed-qty-input-curved { width: 40px; text-align: center; border: none; font-size: 16px; font-weight: 500; pointer-events: none; background: transparent; }
-.ed-btn-add-curved { flex: 1; border-radius: 50px; background: linear-gradient(90deg, #0088ff 0%, #00aaff 100%); color: #fff; font-size: 16px; font-weight: 500; border: none; cursor: pointer; transition: all 0.2s ease; }
+.ed-btn-add-curved { flex: 1; border-radius: 50px; background: #000; color: #fff; font-size: 16px; font-weight: 500; border: none; cursor: pointer; transition: all 0.2s ease; }
 .ed-btn-add-curved:hover { filter: brightness(1.1); }
 .ed-btn-buy-curved { width: 100%; height: 50px; border-radius: 50px; background: linear-gradient(180deg, #3a4148 0%, #0c1218 100%); color: #fff; font-size: 16px; font-weight: 500; border: none; cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,0.15); transition: all 0.2s ease; }
 .ed-btn-buy-curved:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(0,0,0,0.2); }
@@ -279,3 +279,4 @@ body { overflow-x: hidden; }
 .ed-cart-checkout { border-radius: 50px !important; }
 .ed-drawer-item-remove { border-radius: 50px !important; padding: 4px 12px !important; }
 .ed-drawer { border-top-left-radius: 24px; border-bottom-left-radius: 24px; }
+
