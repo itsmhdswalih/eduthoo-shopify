@@ -37,7 +37,7 @@
               <span>ADD TO CART</span>
             </button>
             
-            <button class="ed-purchase-buy-new" type="button" data-buy-button-direct {% if product == blank or not product.selected_or_first_available_variant.available %}disabled{% endif %} aria-label="Buy now">
+            <button class="ed-purchase-buy-new" type="button" data-buy-button-direct {% if product == blank or product.selected_or_first_available_variant.available == false %}disabled{% endif %} aria-label="Buy now">
               <span data-buy-label>BUY AT {% if product != blank %}{{ product.selected_or_first_available_variant.price | money }}{% else %}₹2,999{% endif %}</span>
             </button>
           </div>
@@ -78,6 +78,7 @@
 {% schema %}
 { "name": "Main product", "settings": [] }
 {% endschema %}
+
 
 
 
