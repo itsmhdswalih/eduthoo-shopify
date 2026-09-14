@@ -456,3 +456,75 @@ body { overflow-x: clip; }
 @media (max-width: 749px) { body { padding-top: 60px !important; } }
 
 
+
+/* ============================================================================
+   JUDGE.ME PREMIUM OVERRIDES (EDUTHOO THEME)
+============================================================================ */
+.jdgm-widget { 
+  font-family: inherit !important; 
+  color: #000 !important;
+}
+.jdgm-rev-widg { 
+  max-width: 800px !important; 
+  margin: 0 auto !important; 
+}
+.jdgm-write-rev-link {
+  background: #000 !important;
+  color: #fff !important;
+  border-radius: 50px !important;
+  padding: 12px 32px !important;
+  border: none !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  transition: all 0.3s ease !important;
+}
+.jdgm-write-rev-link:hover { 
+  transform: translateY(-2px) !important; 
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important; 
+}
+.jdgm-rev {
+  border: 1px solid rgba(0,0,0,0.05) !important;
+  border-radius: 24px !important;
+  padding: 24px !important;
+  margin-bottom: 24px !important;
+  background: #fff !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.04) !important;
+  transition: transform 0.3s ease !important;
+}
+.jdgm-rev:hover {
+  transform: translateY(-3px) !important;
+}
+.jdgm-star { 
+  color: #FFC107 !important; 
+}
+.jdgm-rev__title { 
+  font-weight: 900 !important; 
+  font-size: 18px !important; 
+  margin-bottom: 8px !important;
+}
+.jdgm-rev__body {
+  line-height: 1.6 !important;
+  color: #555 !important;
+}
+.jdgm-form-wrapper {
+  background: #f9f9f9 !important;
+  padding: 32px !important;
+  border-radius: 24px !important;
+  border: 1px solid rgba(0,0,0,0.05) !important;
+  margin-bottom: 30px !important;
+}
+.jdgm-submit-rev { 
+  background: #000 !important; 
+  color: #fff !important; 
+  border-radius: 50px !important; 
+  font-weight: 800 !important; 
+  padding: 14px 24px !important;
+  text-transform: uppercase !important;
+}
+input.jdgm-form__reviewer-name, input.jdgm-form__reviewer-email, textarea.jdgm-form__body, input.jdgm-form__title {
+  border-radius: 12px !important;
+  border: 1px solid #ddd !important;
+  padding: 12px 16px !important;
+  background: #fff !important;
+}
