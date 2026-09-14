@@ -36,7 +36,13 @@
       },
       "block_order": ["faq_1", "faq_2", "faq_3"]
     },
-    "brand_features": {
+    
+    "product_reviews_app": {
+      "type": "apps",
+      "blocks": {},
+      "block_order": []
+    },
+		"brand_features": {
       "type": "brand-features",
       "settings": {}
     },
@@ -48,9 +54,9 @@
   "order": [
     "main",
     "policies",
-    "faq",
-    "brand_features",
+    "faq", "product_reviews_app", "brand_features",
     "related"
   ]
 }
+
 
