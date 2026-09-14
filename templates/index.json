@@ -33,9 +33,21 @@
         }
       },
       "block_order": ["faq_1", "faq_2", "faq_3"]
+    }, "testimonials": {
+      "type": "testimonials",
+      "settings": {},
+      "blocks": {
+        "review_1": { "type": "review", "settings": { "author": "Michael S.", "text": "I was skeptical at first, but this gadget exceeded my expectations. Super fast shipping too!" } },
+        "review_2": { "type": "review", "settings": { "author": "Sarah L.", "text": "Beautiful packaging and premium feel. It solved a problem I didn`t even know I had. Highly recommended." } },
+        "review_3": { "type": "review", "settings": { "author": "David M.", "text": "The best purchase I`ve made this year. I use it every single day. Customer service was also very helpful." } },
+        "review_4": { "type": "review", "settings": { "author": "Emma R.", "text": "Bought this as a gift and they loved it. The design is sleek and modern, perfectly fitting in our home." } }
+      },
+      "block_order": ["review_1", "review_2", "review_3", "review_4"]
     },
     "newsletter": { "type": "newsletter", "settings": {} }
   },
-  "order": ["hero", "categories", "featured", "brand_features", "policies", "faq", "trust", "newsletter"]
+  "order": ["hero", "categories", "featured", "brand_features", "policies", "faq", "testimonials", "trust", "newsletter"]
 }
+
+
 

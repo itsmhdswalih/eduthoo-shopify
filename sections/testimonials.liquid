@@ -1,0 +1,105 @@
+<style>
+  .ed-testi-section { padding: 60px 0; background: #ffffff; text-align: center; overflow: hidden; }
+  .ed-testi-scroll { 
+    display: flex; gap: 24px; padding: 20px; overflow-x: auto; 
+    scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .ed-testi-scroll::-webkit-scrollbar { display: none; }
+  
+  .ed-review-card { 
+    min-width: 320px; max-width: 350px; background: #fff; padding: 32px; 
+    border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.06); 
+    scroll-snap-align: center; text-align: left; flex-shrink: 0; 
+    border: 1px solid rgba(0,0,0,0.04); transition: transform 0.3s ease;
+  }
+  .ed-review-card:hover { transform: translateY(-4px); }
+  
+  .ed-stars { color: #FFC107; font-size: 20px; margin-bottom: 16px; letter-spacing: 2px; }
+  .ed-review-text { font-size: 15px; color: #555; line-height: 1.6; margin-bottom: 24px; }
+  .ed-review-author { font-size: 14px; font-weight: 800; color: #000; display: flex; align-items: center; gap: 6px; text-transform: capitalize; }
+  .ed-verified { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; background: #10B981; color: #fff; border-radius: 50%; font-size: 10px; margin-left: 4px; }
+  
+  @media (max-width: 749px) {
+    .ed-testi-scroll { padding: 20px 16px; gap: 16px; }
+    .ed-review-card { min-width: 85vw; padding: 24px; }
+  }
+</style>
+
+<section class="ed-testi-section">
+  <div class="ed-section-heading ed-section-heading--center" style="margin-bottom: 20px;">
+    <h2 style="font-size: clamp(24px, 5vw, 36px); font-weight: 900; margin: 0;">{{ section.settings.heading }}</h2>
+  </div>
+  
+  <div class="ed-testi-scroll">
+    {% for block in section.blocks %}
+      <div class="ed-review-card" {{ block.shopify_attributes }}>
+        <div class="ed-stars">
+          {% assign rating = block.settings.rating | plus: 0 %}
+          {% for i in (1..5) %}
+            {% if i <= rating %}★{% else %}<span style="color: #eee;">★</span>{% endif %}
+          {% endfor %}
+        </div>
+        <div class="ed-review-text">"{{ block.settings.text }}"</div>
+        <div class="ed-review-author">
+          {{ block.settings.author }}
+          <span class="ed-verified" title="Verified Buyer">✔</span>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "WHAT OUR CUSTOMERS SAY"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author Name",
+          "default": "John D."
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Review Text",
+          "default": "Absolutely love these products! They have made my daily routine so much easier and the quality is fantastic."
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "Star Rating",
+          "default": 5
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        { "type": "review", "settings": { "author": "Michael S.", "text": "I was skeptical at first, but this gadget exceeded my expectations. Super fast shipping too!" } },
+        { "type": "review", "settings": { "author": "Sarah L.", "text": "Beautiful packaging and premium feel. It solved a problem I didn't even know I had. Highly recommended." } },
+        { "type": "review", "settings": { "author": "David M.", "text": "The best purchase I've made this year. I use it every single day. Customer service was also very helpful." } },
+        { "type": "review", "settings": { "author": "Emma R.", "text": "Bought this as a gift and they loved it. The design is sleek and modern, perfectly fitting in our home." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
