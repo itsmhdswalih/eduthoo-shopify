@@ -528,3 +528,80 @@ input.jdgm-form__reviewer-name, input.jdgm-form__reviewer-email, textarea.jdgm-f
   padding: 12px 16px !important;
   background: #fff !important;
 }
+
+/* ============================================================================
+   JUDGE.ME SUPER PREMIUM OVERRIDES V2
+============================================================================ */
+/* Hide green, force black */
+div.jdgm-widget * {
+  --jdgm-primary-color: #000000 !important;
+  --jdgm-secondary-color: #000000 !important;
+}
+
+/* Heading Styling */
+h2.jdgm-rev-widg__title, 
+.jdgm-rev-widg__title {
+  font-size: clamp(28px, 6vw, 42px) !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.03em !important;
+  text-align: center !important;
+  margin-bottom: 24px !important;
+  color: #000 !important;
+  font-family: inherit !important;
+}
+
+/* Button Styling (Bigger, Curved, Black) */
+.jdgm-widget a.jdgm-write-rev-link,
+.jdgm-widget input.jdgm-submit-rev,
+.jdgm-widget .jdgm-btn,
+.jdgm-write-rev-link {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-radius: 50px !important;
+  padding: 18px 48px !important;
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  border: none !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.15) !important;
+  transition: all 0.3s ease !important;
+  display: inline-block !important;
+  margin: 10px auto !important;
+}
+
+.jdgm-widget a.jdgm-write-rev-link:hover,
+.jdgm-widget input.jdgm-submit-rev:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 16px 32px rgba(0,0,0,0.25) !important;
+  background-color: #222222 !important;
+}
+
+/* Center the Write Review area */
+.jdgm-widget-actions, 
+.jdgm-widget .jdgm-widget-actions-wrapper {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Stars */
+.jdgm-widget .jdgm-star {
+  color: #000000 !important; /* Make stars black/gold instead of green */
+}
+
+/* Remove default boring borders */
+.jdgm-rev-widg {
+  border: none !important;
+  padding: 40px 16px !important;
+}
+
+/* 'Be the first to write a review' text */
+.jdgm-widget .jdgm-row-stars {
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  margin-bottom: 16px !important;
+}
