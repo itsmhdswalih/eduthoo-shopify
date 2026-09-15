@@ -46,9 +46,7 @@
     transform: translateY(-4px);
     box-shadow: 0 12px 32px rgba(0,0,0,0.08);
   }
-  /* Old video hover removed */
-    transform: scale(1.04);
-  }
+  
   .ed-category-text {
     padding: 24px;
   }
@@ -124,17 +122,18 @@
     height: 100%;
     object-fit: cover;
     transform: scale(1.15);
-    transition: transform .4s cubic-bezier(0.25, 1, 0.5, 1);
+    object-fit: cover; transform: scale(1.08); transition: transform .4s cubic-bezier(0.25, 1, 0.5, 1);
     mix-blend-mode: multiply; /* Removes grey background perfectly on white */
   }
   .ed-category-card-custom:hover .ed-video-wrapper video {
-    transform: scale(1.22);
+    transform: scale(1.15);
   }
 </style>
 
 {% schema %}
 { "name": "EDUTHOO categories", "settings": [], "presets": [{ "name": "EDUTHOO categories" }] }
 {% endschema %}
+
 
 
 
